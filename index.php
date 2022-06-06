@@ -85,11 +85,7 @@
       <div class="header__logo">
         <img src="./multimedia/img/logo-white.png" alt="Natours logo" />
       </div>
-      <nav class="nav nav--user">
-        <!-- <a href="./files/fileManipulation.php" class="nav__el">File Manipulation</a> -->
-        <!-- <a href="./view/blog.php" class="nav__el">Blog</a> -->
-        <a href="#" class="nav__el"><?php echo $booking?></a>
-        
+      <nav class="nav nav--user">        
         <?php 
         if(isset($_SESSION["username"])){
           $role = $_SESSION["role"];
