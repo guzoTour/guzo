@@ -40,6 +40,6 @@
             </form>
         </div>
     </div>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="../../javascript/register.js"></script>
 </body>
 </html>
