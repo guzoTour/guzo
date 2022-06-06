@@ -12,7 +12,9 @@ if(isset($_SESSION["username"])){
   <link href="https://cdn.jsdelivr.net/npm/daisyui@2.15.2/dist/full.css" rel="stylesheet" type="text/css" />
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.4/dist/flowbite.min.css" />
+<link rel="shortcut icon" type="image/png" href="../../multimedia/img/favicon.png" />
 
+<title>Guzo Tour</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/flowbite@1.4.7/dist/datepicker.js"></script>
