@@ -153,8 +153,8 @@
         ?>
         </a>
         <a href="../../controller/authController/log_out.php" class="nav__el"><?php echo $logout?></a>
-        <a href="./login.php" class="nav__el"><?php echo $login?></a>
-        <a href="./register.php" class="nav__el"><?php echo $signup?></a>        
+        <a href="../shared/login.php" class="nav__el"><?php echo $login?></a>
+        <a href="../shared/register.php" class="nav__el"><?php echo $signup?></a>        
       </nav>
     </header>
     <section class="section-header">
