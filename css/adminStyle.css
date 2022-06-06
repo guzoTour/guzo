@@ -149,15 +149,10 @@
   }
   .mainProfile{
     display:flex;
-     justify-content:space-between; 
-    flex-wrap: wrap;
-    /* align-items:flex-end; */
-   
+    justify-content:space-between;    
     max-height: 85vh;
     min-height: 85vh;
     width: 100%;
-      /* background-image: linear-gradient(to right bottom, #7dd56f, #28b487);
-    opacity: 0.9; */
   }
   a{
     text-decoration: none;
