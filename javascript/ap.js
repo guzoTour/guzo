@@ -1,6 +1,6 @@
 setInterval(() => {
     console.log("jashdhj")
-    fetch('http://localhost:7882/Tour/utils/api.php?req=true')
+    fetch('http://localhost/guzo/utils/api.php?req=true')
     .then(res=>res.json())
     .then(data=>{
         console.log(data)
