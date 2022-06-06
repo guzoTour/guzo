@@ -96,8 +96,7 @@ if (mysqli_num_rows($result) > 0) {
             $role = $row["role"];
             
         }catch(Exception $err){
-            echo $err;
-        }
+            echo $err; mysqli_error($conn);        }
     }
     else{
         header("location:../view/login.php");
@@ -197,11 +196,7 @@ if (mysqli_num_rows($result) > 0) {
       <div class="TotalTour">
      <h1> <i class="fa-solid fa-van-shuttle"></i> Total Tour</h1> <h1><?php echo "$total  Tour are active";  ?></h1>
      </div>
-        <div class="Todaycustomers">
-      <h1><i class="fa-solid fa-door-open"></i>Todays customers</h1>
-        <h1><?php 
-      ;  echo "$countday booking order" ?></h1>
-      </div>
+     
      <div class="Totalbookingspace">
     <h1><i class="fa-brands fa-servicestack"></i>Total book space</h1>
     <h1><?php echo "$totalbookspace  applicants can apply";  ?></h1>
@@ -293,10 +288,10 @@ if (mysqli_num_rows($result) > 0) {
 
 
 <div class="profileInfo">
-  <div class="xbtn"><button>X</button></div>
-  <form action="#"  method="post">
-          <div>
-            <div class="imgSize">
+  <div class="prof">
+    <div>
+    <div class="xbtn"><button>X</button></div>
+     <div class="imgSize">
               <?php   
         $filepath = "<img class='imags' src = "."../../multimedia/img/users/".$photo.">";
         echo $filepath;
@@ -304,6 +299,21 @@ if (mysqli_num_rows($result) > 0) {
         <div class="up">
         </div>
    </div>
+    <form  method="POST" action="#" enctype="multipart/form-data" id = "photo">
+      <input type="file" name="uploadfile"  id = "fileupload" style = "display:none"value="" required/>
+        
+      <div>
+          <button class="upup" type="submit" name="upload" value ="true" id = "filee" onclick = "diplayImageForm('filee')" >UPLOAD</button>
+        </div>
+        <div>
+          <button class="upup"  type="submit" name="upload" value ="true" style = "display:none" id = "filebtn" >Submit</button>
+        </div>
+  </form>
+  </div>
+ 
+  <form action="#"  method="post">
+          <div>
+            
    <p>First Name:   <?php  $first_name="<input class='editInput' name='first_name' type='text' value='$first_name' disabled=true>";
       echo $first_name ?> </p>
      <p>Last Name: <?php  $last_name="<input class='editInput' name='last_name' type='text' value='$last_name' disabled=true>";
@@ -330,17 +340,8 @@ if (mysqli_num_rows($result) > 0) {
    
     
   </div>
-
-  <form  method="POST" action="#" enctype="multipart/form-data" id = "photo">
-      <input type="file" name="uploadfile"  id = "fileupload" style = "display:none"value="" required/>
-        
-      <div>
-          <button type="submit" name="upload" value ="true" id = "filee" onclick = "diplayImageForm('filee')" >UPLOAD</button>
-        </div>
-        <div>
-          <button type="submit" name="upload" value ="true" style = "display:none" id = "filebtn" >Submit</button>
-        </div>
-  </form>
+</div>
+ 
   
   <script src="../../javascript/ap.js"></script>
 <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
