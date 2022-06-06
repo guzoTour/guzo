@@ -51,8 +51,16 @@ if(isset($_SESSION["username"])){
 </head>
 <body class="">
   <div class="">
+    <div class ='flex text-center items-center justify-center'>
       <h1 class="text-center m-10 text-3xl font-bold text-green-400">Add New Tour</h1>
-      <button class="text-center m-10 text-3xl font-bold text-green-400" id="goto-edit-profile"><a href="../../utils/importTours.php">Import Tour </a></button>;
+      <div class = 'flex items-center text-green-400 space-x-1 cursor-pointer'>
+          <button class="text-center ml-10 text-3xl font-bold text-green-400" id="goto-edit-profile"><a href="../../utils/importTours.php">Import Tour </a></button>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+  </svg>
+      </div>
+</svg>
+    </div>
       <div class="">
         <form   action="../../controller/tourController/add-tour.php" class="flex justify-center space-x-10 items-center" method = "post">
             <div>
