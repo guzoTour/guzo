@@ -33,7 +33,8 @@
                 $mydata = mysqli_query($conn, $sql);
                 $row = $mydata->fetch_assoc();
                 if(!isset($row)){
-                    echo "You hava not registerd Please register!!!";
+                      echo "You hava not registerd Please register!!!";
+                     
                 }
                 else{
                     if (password_verify($password, $row["pw"])){
@@ -59,6 +60,7 @@
                     else{
                         $_SESSION['attempt'] += 1;
                         echo "Your Password is not correct !!";
+                         header("location:../../view/public/404.php");
                         if($_SESSION['attempt']>=3){
                             $_SESSION['attempt_again'] = time() + 60*60;
                             echo "\nSorry please try again after a hour!!";

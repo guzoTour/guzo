@@ -117,6 +117,7 @@ if (mysqli_num_rows($result) > 0) {
 
     <link rel="stylesheet" href="../../css/style.css" />
     <link rel="stylesheet" href="../../css/adminStyle.css" />
+    <link rel="stylesheet" href="../../css/rate_style.css" />
     <link rel="shortcut icon" type="image/png" href="../../multimedia/img/favicon.png" />
 
    
