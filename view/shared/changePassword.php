@@ -1,20 +1,25 @@
+<?php
+	 session_start();
+	 include "../../utils/prevent.php";
+	 isAuthenticated();
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Change Password</title>
-	<link rel="stylesheet" type="text/css" href="../css/register.css">
+	<link rel="stylesheet" type="text/css" href="../../css/register.css">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<img class="wave" src="../multimedia/img/wave.png">
+	<img class="wave" src="../../multimedia/img/wave.png">
 	<div class="container">
 		<div class="img">
-			<img src="../multimedia/img/bg.svg">
+			<img src="../../multimedia/img/bg.svg">
 		</div>
 		<div class="login-content">
-			<form method = "post" action = "../controller/authController/changePassword.php">
+			<form method = "post" action = "../../controller/authController/changePassword.php">
 				<img src="../multimedia/img/avatar.svg">
 				<h2 class="title">Welcome</h2>
            		<div class="input-div one">

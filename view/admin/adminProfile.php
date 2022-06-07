@@ -328,6 +328,7 @@ if (mysqli_num_rows($result) > 0) {
         <button class="upload disabler uploads" id="goto-edit-profile">Edit Profile</button>
         <input class="upload editProfile"  type="submit" name="edit" value="Save" id="">
       </div>
+      <button class="upload rbtn disablers" id="changepassword"><a href="../shared/changePassword.php">Change Password</a></button>;
     </form>
 
    
@@ -342,7 +343,15 @@ if (mysqli_num_rows($result) > 0) {
     
   </div>
 </div>
- 
+<style>
+  #changepassword{
+    position:absolute;
+    top:75%;
+    left:-3%;
+  
+}
+</style>
+
   
   <script src="../../javascript/ap.js"></script>
 <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
@@ -382,7 +391,10 @@ rbtn.addEventListener("click", function(e){
 })
 
 </script>
+
 <style>
+
+
 .feedback{
     width: 100%;
     max-width: 780px;
