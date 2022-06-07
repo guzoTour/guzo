@@ -21,7 +21,7 @@ $url = $_SERVER["REQUEST_URI"];
 
                   }catch(Exception $err){
                
-                  
+                   $_SESSION["bookeds"]="book";
 
                      header("location:../../index.php");
 

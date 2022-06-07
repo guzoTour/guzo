@@ -1,13 +1,14 @@
 <?php
   session_start();
   if(isset($_SESSION["booked"])){
+      unset($_SESSION["booked"]);
      echo '<script>alert("Booking is done  Thank You")</script>';
-     unset($_SESSION["booked"]);
 
 
   }
 
-  else{
+  if(isset($_SESSION["bookeds"])){
+    unset($_SESSION["bookeds"]);
      echo '<script>alert("u are already booked Thank You")</script>';
 
 
