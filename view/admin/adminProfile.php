@@ -122,7 +122,7 @@ if (mysqli_num_rows($result) > 0) {
 
    
 
-    <title>Natours | Exciting tours for adventurous people</title>
+    <title>Guzo Tour</title>
   </head>
 <body style="min-height:100vh;">
 <header class="header">

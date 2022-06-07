@@ -93,7 +93,7 @@
     <link rel="stylesheet" href="../../css/style.css" />
     <link rel="shortcut icon" type="image/png" href="../../multimedia/img/favicon.png" />
 
-    <title>Natours | Exciting tours for adventurous people</title>
+    <title>Guzo Tour</title>
   </head>
 <body>
 <header class="header">
