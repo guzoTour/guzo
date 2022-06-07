@@ -478,43 +478,10 @@ echo '</div> </div>';
             ///////////////////////////////////////////////////////
             /////////////////////booking controller/////////////////
             
-<<<<<<< HEAD
+
           
-=======
-            if(isset($_POST["sub"])){
-                if($user_id!=""){
-                  $bookSql="INSERT INTO `booking` (`tour_id`, `user_id`, `piad`, `Created_at`) VALUES ('$tour_id', '$user_id', '1', current_timestamp());";
-                  
-                  try{
-                   mysqli_query($conn, $bookSql);
-                    echo '<script>alert("Booking is done  Thank You")</script>';
-
-                  }catch(Exception $err){
-                  echo '<script>alert("oops!! You are already registerd for this tour")</script>';
-
-                         }
-
-
-                }
-    
-
-                else{
-                  echo '<script>alert("oops!! login first")</script>';
-                
-
-                }
-
-
-            } ?>
->>>>>>> 9d991eee52ba345fdc2ec6dcca45f89d09d13b1a
-
-             ///////////////////booking controller ////////////////
-            ///////////////////////////////////////////////////////
-            ///////////////////////////////////////////////////////
-            ///////////////////////////////////////////////////////
-            ///////////////////booking controller/////////////////
-            
-            ?>
+?>
+              
             
             <form action="" method="post"></form>
 

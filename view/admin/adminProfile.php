@@ -62,7 +62,7 @@ if (mysqli_num_rows($result) > 0) {
    if(isset($_POST["edit"])){
        
         include "../../utils/uploadImage.php";
-        uploadImage("../../multimedia/img/users/","profileImage");
+        uploadImage("../../multimedia/img/users/","profileImage",56);
         $firstname = $_POST['first_name'];
         $lastname = $_POST["last_name"];
         $phone=$_POST["phone"];
@@ -74,7 +74,7 @@ if (mysqli_num_rows($result) > 0) {
    }
    if (isset($_POST['upload'])) {
     include "../../utils/uploadImage.php";
-    uploadImage("../../multimedia/img/users/","profileImage");
+    uploadImage("../../multimedia/img/users/","profileImage",78);
   }
 
     
