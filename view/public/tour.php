@@ -489,10 +489,10 @@ echo '</div> </div>';
 
 
                 }
-    
-
                 else{
                   echo '<script>alert("oops!! login first")</script>';
+                   
+                  header("location:../shared/login.php");
                 
 
                 }
