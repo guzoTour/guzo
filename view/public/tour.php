@@ -473,6 +473,13 @@ echo '</div> </div>';
               echo "<h2 class='heading-secondary'>What are you waiting for?</h2>";
             
             }
+
+
+           
+            ////////////////////booking controller//////////////////////
+            ///////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////
+            /////////////////////booking controller/////////////////
             
             if(isset($_POST["sub"])){
                 if($user_id!=""){
@@ -492,14 +499,22 @@ echo '</div> </div>';
                 else{
                   echo '<script>alert("oops!! login first")</script>';
                    
-                  header("location:../shared/login.php");
+                  // header("location:../shared/login.php");
                 
 
                 }
 
 
-            } ?>
+            } 
 
+             ///////////////////booking controller ////////////////
+            ///////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////
+            ///////////////////booking controller/////////////////
+            
+            ?>
+            
             <form action="" method="post"></form>
 
           <?php  
