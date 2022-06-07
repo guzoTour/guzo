@@ -70,11 +70,11 @@
     }
     if (isset($_POST['upload1'])) {
       include "../../utils/uploadImage.php";
-      uploadImage("../../multimedia/img/users/","profileImage");
+      uploadImage("../../multimedia/img/tours/","coverImage",$tour_id);
     }
     if (isset($_POST['upload2'])) {
       include "../../utils/uploadImage.php";
-      uploadImage("../../multimedia/img/users/","profileImage");
+      uploadImage("../../multimedia/img/tours/","tourImage",$tour_id);
     }
 
 ?> 
@@ -111,7 +111,7 @@
       </div>
       <nav class="nav nav--user">
         <!-- <a href="#" class="nav__el"><?php echo $booking?></a> -->
-        <a href="./view/profile.php" class="nav__el">
+        <a href="../shared/profile.php" class="nav__el">
         <?php 
         if(isset($_SESSION["username"])){
           $filepath = "<img src = "."../../multimedia/img/users/".$photo." class='nav__user-img'.".">";
@@ -191,20 +191,19 @@
           <button type="submit" name="upload" value ="true" id = "filee" onclick = "diplayImageForm('filee')" >UPLOAD</button>
         </div>
         <div>
-          <button type="submit" name="upload" value ="true" style = "display:none" id = "filebtn2" >Submit</button>
+          <button type="submit" name="upload1" value ="true" style = "display:none" id = "filebtn1" >Submit</button>
         </div>
   </form> 
   <form  method="POST" action="#" enctype="multipart/form-data" id = "photo">
       <input type="file" name="uploadfile"  id = "fileupload2" style = "display:none"value="" required/>
         
       <div> Upload Image
-          <button type="submit" name="upload1" value ="true" id = "fileee" onclick = "diplayImageForm('fileee')" >UPLOAD</button>
+          <button type="submit" name="upload" value ="true" id = "fileee" onclick = "diplayImageForm('fileee')" >UPLOAD</button>
         </div>
         <div>
           <button type="submit" name="upload2" value ="true" style = "display:none" id = "filebtn2" >Submit</button>
         </div>
   </form> 
-
   <script>
      function diplayImageForm(id){
     document.getElementById(id).style.display = "none";

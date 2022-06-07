@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <?php 
   if(isset($_SESSION["notlogged"])){
@@ -10,6 +11,12 @@
 
 
 
+=======
+<?php
+	session_start();
+	include "../../utils/prevent.php";
+	isNotLogged();
+>>>>>>> 9d991eee52ba345fdc2ec6dcca45f89d09d13b1a
 ?>
 
 <!DOCTYPE html>

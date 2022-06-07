@@ -1,6 +1,5 @@
 <?php
 
-
     session_start();
     include "../../config/config.php";
     $booking = " ";
@@ -10,15 +9,13 @@
     $signup = "Sign up";
      $user_role="";
      $user_id="";
-     if(isset($_SESSION["role"])){
+    //  if(isset($_SESSION["role"])){
+    //    $role=$_SESSION["role"];
+    //  }
+    //  else{
+    //  $role="none";
 
-       $role=$_SESSION["role"];
-
-     }
-     else{
-   $role="none";
-
-     }
+    //  }
     if(isset($_SESSION["username"])){
       $booking = "Booking";
       $profile = "Profile";
@@ -65,21 +62,21 @@
        $group_size = $row["group_size"];
        $summary = $row["summary"];
        $price = $row["price"];
-      //  $discount = $row["discount"];
+       $discount = $row["discount"];
        $region = $row["region"];
        $town = $row["town"];
        $direction = $row["direction"];
        $start_date = $row["start_date"];
-    $raters=$row["rating_quantity"];
-    $rating=$row["rating"];
+       $raters=$row["rating_quantity"];
+       $rating=$row["rating"];
+
        $_SESSION["display"] = true;
+
     $count="SELECT COUNT(*) FROM booking WHERE tour_id=$tour_id;";
     $cResult = mysqli_query($conn, $count);
     $data=mysqli_fetch_assoc($cResult);
-   $count= $data['COUNT(*)'];
-   
+    $count= $data['COUNT(*)'];
 
-       
    }
    else{
         echo "Ther is no Tour with this name";
@@ -481,7 +478,35 @@ echo '</div> </div>';
             ///////////////////////////////////////////////////////
             /////////////////////booking controller/////////////////
             
+<<<<<<< HEAD
           
+=======
+            if(isset($_POST["sub"])){
+                if($user_id!=""){
+                  $bookSql="INSERT INTO `booking` (`tour_id`, `user_id`, `piad`, `Created_at`) VALUES ('$tour_id', '$user_id', '1', current_timestamp());";
+                  
+                  try{
+                   mysqli_query($conn, $bookSql);
+                    echo '<script>alert("Booking is done  Thank You")</script>';
+
+                  }catch(Exception $err){
+                  echo '<script>alert("oops!! You are already registerd for this tour")</script>';
+
+                         }
+
+
+                }
+    
+
+                else{
+                  echo '<script>alert("oops!! login first")</script>';
+                
+
+                }
+
+
+            } ?>
+>>>>>>> 9d991eee52ba345fdc2ec6dcca45f89d09d13b1a
 
              ///////////////////booking controller ////////////////
             ///////////////////////////////////////////////////////
