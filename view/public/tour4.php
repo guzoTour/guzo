@@ -27,7 +27,7 @@
       $signup = "";
     
         $user_name = $_SESSION["username"];
-        $user_role= $_SESSION["role"];
+        $user_role = $_SESSION["role"];
         $sql = "SELECT* FROM user WHERE username = '$user_name'";
         
     try{
@@ -94,14 +94,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="stylesheet" href="../../css/rate_style.css">
+      <!-- <link rel="stylesheet" href="../../css/rate_style.css"> -->
     <link
       href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700"
       rel="stylesheet"
     />
 
     <link rel="stylesheet" href="../../css/style.css" />
-    <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="../../../multimedia/img/favicon.png" />
 
     <title>Guzo Tours | <?php echo $tour_name?></title>
 
@@ -114,11 +114,11 @@
   <body>
     <header class="header">
       <nav class="nav nav--tours">
-        <a href="../index.php" class="nav__el">All tours</a>
+        <a href="../../index.php" class="nav__el">All tours</a>
         <form class="nav__search">
          <!-- <button class="nav__search-btn">
             <svg>
-              <use xlink:href="../multimedia/img/icons.svg#icon-search"></use>
+              <use xlink:href="../../multimedia/img/icons.svg#icon-search"></use>
             </svg>
           </button>
           <input
@@ -138,24 +138,23 @@
 
 
       if($role=="admin"){
-        echo '<a href="./profile admin.php" class="nav__el">';
+        echo '<a href="../admin/adminProfile.php" class="nav__el">';
 
       }
       else{
-        echo '<a href="./profile.php" class="nav__el">';
-
+        echo '<a href="../shared/profile.php" class="nav__el">';
 
       }
         if(isset($_SESSION["username"])){
           
-          $filepath = "<img src = "."../multimedia/img/users/".$photo." class='nav__user-img'.".">";
+          $filepath = "<img src = "."../../multimedia/img/users/".$photo." class='nav__user-img'.".">";
           echo $filepath;
         }
         ?>
         </a>
-        <a href="../controller/log_out.php" class="nav__el"><?php echo $logout?></a>
-        <a href="./login.php" class="nav__el"><?php echo $login?></a>
-        <a href="./register.php" class="nav__el"><?php echo $signup?></a>        
+        <a href="../../controller/authController/log_out.php" class="nav__el"><?php echo $logout?></a>
+        <a href="../shared/login.php" class="nav__el"><?php echo $login?></a>
+        <a href="../shared/register.php" class="nav__el"><?php echo $signup?></a>        
       </nav>
     </header>
     <section class="section-header">
@@ -194,21 +193,21 @@
             <h2 class="heading-secondary ma-bt-lg">Quick facts</h2>
             <div class="overview-box__detail">
               <svg class="overview-box__icon">
-                <use xlink:href="../multimedia/img/icons.svg#icon-calendar"></use>
+                <use xlink:href="../../multimedia/img/icons.svg#icon-calendar"></use>
               </svg>
               <span class="overview-box__label">Start At </span>
               <span class="overview-box__text"><?php echo $start_date?> </span>
             </div>
             <div class="overview-box__detail">
               <svg class="overview-box__icon">
-                <use xlink:href="../multimedia/img/icons.svg#icon-trending-up"></use>
+                <use xlink:href="../../multimedia/img/icons.svg#icon-trending-up"></use>
               </svg>
               <span class="overview-box__label">Difficulty</span>
               <span class="overview-box__text"><?php echo $difficulty?> </span>
             </div>
             <div class="overview-box__detail">
               <svg class="overview-box__icon">
-                <use xlink:href="../multimedia/img/icons.svg#icon-user"></use>
+                <use xlink:href="../../multimedia/img/icons.svg#icon-user"></use>
               </svg>
               <span class="overview-box__label">Participants</span>
               <span class="overview-box__text"> <?php echo  $group_size?>  people</span>
@@ -247,21 +246,21 @@
       <div class="picture-box">
         <img
           class="picture-box__img picture-box__img--1"
-          src="../multimedia/img/tour-5-1.jpg"
+          src="../../multimedia/img/tour-5-1.jpg"
           alt="The Park Camper Tour 1"
         />
       </div>
       <div class="picture-box">
         <img
           class="picture-box__img picture-box__img--2"
-          src="../multimedia/img/tour-5-2.jpg"
+          src="../../multimedia/img/tour-5-2.jpg"
           alt="The Park Camper Tour 1"
         />
       </div>
       <div class="picture-box">
         <img
           class="picture-box__img picture-box__img--3"
-          src="../multimedia/img/tour-5-3.jpg"
+          src="../../multimedia/img/tour-5-3.jpg"
           alt="The Park Camper Tour 1"
         />
       </div>
@@ -377,7 +376,7 @@
     $sq1="SELECT * FROM review WHERE tour_id=$tour_id ORDER BY id DESC LIMIT 4;";
     try{
     $result =mysqli_query($conn, $sq1);
-  $num=mysqli_num_rows($result);
+  
     if(mysqli_num_rows($result)>=2){
       
     while($row=mysqli_fetch_assoc($result)){
@@ -397,7 +396,7 @@
         <div class="reviews__card">
           <div class="reviews__avatar">
             <img
-              src="../multimedia/img/users/user-7.jpg"
+              src="../../multimedia/img/users/$user_image"
               alt="Jim Brown"
               class="reviews__avatar-img"
             />
@@ -417,7 +416,7 @@ DDD;
 echo $str;
 
    for( $x=0; $x<$ratings; $x++){
-     echo '<svg class="reviews__star reviews__star--active"><use xlink:href="../multimedia/img/icons.svg#icon-star"></use></svg>';
+     echo '<svg class="reviews__star reviews__star--active"><use xlink:href="../../../multimedia/img/icons.svg#icon-star"></use></svg>';
 
    }
 echo '</div> </div>';
@@ -445,10 +444,10 @@ echo '</div> </div>';
     <section class="section-cta">
       <div class="cta">
         <div class="cta__img cta__img--logo">
-          <img src="../multimedia/img/logo-white.png" alt="Natours logo" class="" />
+          <img src="../../multimedia/img/logo-white.png" alt="Natours logo" class="" />
         </div>
-        <img src="../multimedia/img/tours/tour-1-1.jpg" alt="" class="cta__img cta__img--1" />
-        <img src="../multimedia/img/tours/tour-1-2.jpg" alt="" class="cta__img cta__img--2" />
+        <img src="../../multimedia/img/tours/tour-1-1.jpg" alt="" class="cta__img cta__img--1" />
+        <img src="../../multimedia/img/tours/tour-1-2.jpg" alt="" class="cta__img cta__img--2" />
 
 
         <div class="cta__content" id="comments">
@@ -507,8 +506,10 @@ echo '</div> </div>';
           if($user_role!="admin"){
           
           if($count!=$group_size){
+            $left =  $group_size-$count;
+          
                echo '<p class="cta__text">'.$duration .'days. 1 adventure. Infinite memories. Make it yours today!</p>';
-               echo '<p class="cta__text">---'.$group_size-$count.' place left</p>';
+               echo '<p class="cta__text">---'.$left.' place left</p>';
                echo ' <form action="" method="post"><button name="sub" class="btn btn--green span-all-rows">Book tour now!</button></form>';      
           }   
           
@@ -571,7 +572,7 @@ echo $str;
     <div class="footer">
       <div class="footer__logo">
         <div class="footerLogo">
-        <img src="../multimedia/img/logo-green-round.png" class="flogoimg" style="width: 70px; height: 70px;" alt="Natours logo" />
+        <img src="../../multimedia/img/logo-green-round.png" class="flogoimg" style="width: 70px; height: 70px;" alt="Natours logo" />
         <span style="font-size: 30px ;"> GUZ TOUR</span>
       </div></div>
       <ul class="footer__nav">
