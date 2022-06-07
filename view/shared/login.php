@@ -1,4 +1,8 @@
-
+<?php
+	session_start();
+	include "../../utils/prevent.php";
+	isNotLogged();
+?>
 <!DOCTYPE html>
 <html>
 <head>

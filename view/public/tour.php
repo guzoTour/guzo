@@ -9,13 +9,13 @@
     $signup = "Sign up";
      $user_role="";
      $user_id="";
-    //  if(isset($_SESSION["role"])){
-    //    $role=$_SESSION["role"];
-    //  }
-    //  else{
-    //  $role="none";
+     if(isset($_SESSION["role"])){
+       $role=$_SESSION["role"];
+     }
+     else{
+     $role="none";
 
-    //  }
+     }
     if(isset($_SESSION["username"])){
       $booking = "Booking";
       $profile = "Profile";
@@ -62,7 +62,7 @@
        $group_size = $row["group_size"];
        $summary = $row["summary"];
        $price = $row["price"];
-       $discount = $row["discount"];
+      //  $discount = $row["discount"];
        $region = $row["region"];
        $town = $row["town"];
        $direction = $row["direction"];
