@@ -33,7 +33,8 @@
                 $mydata = mysqli_query($conn, $sql);
                 $row = $mydata->fetch_assoc();
                 if(!isset($row)){
-                      echo "You hava not registerd Please register!!!";
+                      $reg= "You hava not registerd Please register!!!";
+                       header("location:../../view/public/404.php?massage=$reg&reg=reg");
                      
                 }
                 else{
@@ -59,8 +60,8 @@
                     }
                     else{
                         $_SESSION['attempt'] += 1;
-                        echo "Your Password is not correct !!";
-                         header("location:../../view/public/404.php");
+                        $reg= "Your Password is not correct !!";
+                         header("location:../../view/public/404.php?massage=$reg&reg=pass");
                         if($_SESSION['attempt']>=3){
                             $_SESSION['attempt_again'] = time() + 60*60;
                             echo "\nSorry please try again after a hour!!";
