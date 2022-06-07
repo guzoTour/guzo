@@ -1,6 +1,5 @@
 <?php
 
-
     session_start();
     include "../../config/config.php";
     $booking = " ";
@@ -10,15 +9,13 @@
     $signup = "Sign up";
      $user_role="";
      $user_id="";
-     if(isset($_SESSION["role"])){
+    //  if(isset($_SESSION["role"])){
+    //    $role=$_SESSION["role"];
+    //  }
+    //  else{
+    //  $role="none";
 
-       $role=$_SESSION["role"];
-
-     }
-     else{
-   $role="none";
-
-     }
+    //  }
     if(isset($_SESSION["username"])){
       $booking = "Booking";
       $profile = "Profile";
@@ -65,21 +62,21 @@
        $group_size = $row["group_size"];
        $summary = $row["summary"];
        $price = $row["price"];
-      //  $discount = $row["discount"];
+       $discount = $row["discount"];
        $region = $row["region"];
        $town = $row["town"];
        $direction = $row["direction"];
        $start_date = $row["start_date"];
-    $raters=$row["rating_quantity"];
-    $rating=$row["rating"];
+       $raters=$row["rating_quantity"];
+       $rating=$row["rating"];
+
        $_SESSION["display"] = true;
+
     $count="SELECT COUNT(*) FROM booking WHERE tour_id=$tour_id;";
     $cResult = mysqli_query($conn, $count);
     $data=mysqli_fetch_assoc($cResult);
-   $count= $data['COUNT(*)'];
-   
+    $count= $data['COUNT(*)'];
 
-       
    }
    else{
         echo "Ther is no Tour with this name";
