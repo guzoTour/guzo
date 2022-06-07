@@ -2,6 +2,13 @@
 	session_start();
 	include "../../utils/prevent.php";
 	isNotLogged();
+
+	
+  if(isset($_SESSION["notlogged"])){
+     echo '<script>alert("log in first")</script>';
+     unset($_SESSION["notlogged"]);
+  }
+
 ?>
 <!DOCTYPE html>
 <html>

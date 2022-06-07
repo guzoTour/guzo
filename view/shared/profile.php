@@ -246,7 +246,7 @@ function diplayImageForm(id){
 }
   const handleCancel = (tour_id, user_id)=>{
     console.log(tour_id, user_id)
-    fetch(`http://localhost:7882/Tour/controller/bookingController/cancelBooked.php`,{
+    fetch(`http://localhost/guzo/controller/bookingController/cancelBooked.php`,{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
