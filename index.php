@@ -6,6 +6,12 @@
 
 
   }
+
+  else{
+     echo '<script>alert("u are already booked Thank You")</script>';
+
+
+  }
   $booking = " ";
   $profile = " ";
   $logout = " ";
