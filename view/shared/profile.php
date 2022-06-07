@@ -1,13 +1,11 @@
 <?php
   session_start();
-
   include "../../utils/prevent.php";
   isAuthenticated();
   if(isset($_SESSION['changedPassword'])){
     echo "<script>alert('Password changed sucessefully')</script>";
     unset($_SESSION['changedPassword']);
   }
-
   $booking = " ";
   $profile = " ";
   $logout = " ";
@@ -27,7 +25,6 @@ if (mysqli_query($conn, $sql)) {
 
    }
 
-    if(isset($_SESSION["username"])){
         $booking = "Booking";
         $profile = "Profile";
         $logout = "Log Out";
@@ -51,10 +48,7 @@ if (mysqli_query($conn, $sql)) {
         }catch(Exception $err){
             echo $err;
         }
-    }
-    else{
-        header("location:../../view/shared/login.php");
-    }
+  
     if (isset($_POST['upload'])) {
         include "../../utils/uploadImage.php";
         uploadImage("../../multimedia/img/users/","profileImage",34);
