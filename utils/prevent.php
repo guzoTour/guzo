@@ -1,12 +1,16 @@
 <?php
     function isAuthorzied(){
-        if($_SESSION["role"]!="admin"){
-            header("location:../../index.php");
+        if(isset($_SESSION["username"])){
+            if($_SESSION["role"]!="admin"){
+                header("location:http://localhost:7882/guzo");
+            }
         }
     }
     function isAuthenticated(){
         if(!isset($_SESSION["username"])){
-            header("location:../../view/shared/login.php");
+            header("location:http://localhost:7882/guzo/view/shared/login.php");
         }
     }
+    
+
 ?>

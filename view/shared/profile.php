@@ -52,7 +52,7 @@ if (mysqli_query($conn, $sql)) {
     }
     if (isset($_POST['upload'])) {
         include "../../utils/uploadImage.php";
-        uploadImage("../../multimedia/img/users/","profileImage");
+        uploadImage("../../multimedia/img/users/","profileImage",56);
     }
        
 ?>

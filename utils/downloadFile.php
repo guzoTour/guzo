@@ -1,4 +1,9 @@
 <?php
+    session_start();
+    include "../../utils/prevent.php";
+    isAuthenticated();
+    isAuthorzied();
+
 if(isset($_REQUEST["file"])){
     // Get parameters
     //$file = urldecode($_REQUEST["file"]); // Decode URL-encoded string

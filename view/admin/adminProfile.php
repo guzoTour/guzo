@@ -1,9 +1,15 @@
 <?php
 
-// if (isset($_POST['upload'])) {
-   
-// }
+//header("location:http://localhost:7882/guzo/view/shared/login.php");
   session_start();
+  include "../../utils/prevent.php";
+  isAuthenticated();
+  isAuthorzied();
+
+  if(isset($_SESSION['changedPassword'])){
+    echo "<script>alert('Password changed sucessefully')</script>";
+    unset($_SESSION['changedPassword']);
+  }
   $booking = " ";
   $profile = " ";
   $logout = " ";
@@ -71,14 +77,12 @@ if (mysqli_num_rows($result) > 0) {
     uploadImage("../../multimedia/img/users/","profileImage");
   }
 
-    if(isset($_SESSION["username"])){
+    
     $booking = "Booking";
     $profile = "Profile";
     $logout = "Log Out";
     $login = "";
     $signup = "";
-
-
 
         include "../../config/config.php";
         $user_name = $_SESSION["username"];
@@ -96,11 +100,9 @@ if (mysqli_num_rows($result) > 0) {
             $role = $row["role"];
             
         }catch(Exception $err){
-            echo $err; mysqli_error($conn);        }
-    }
-    else{
-        header("location:../view/login.php");
-    }
+            echo $err; mysqli_error($conn);        
+        }
+  
        
 ?>
 

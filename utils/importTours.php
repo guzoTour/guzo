@@ -1,7 +1,10 @@
 
 <?php
-    include "../config/config.php";
-
+    include "../../config/config.php";
+    session_start();
+    include "../../utils/prevent.php";
+    isAuthenticated();
+    isAuthorzied();
    if(isset($_FILES['tourFile'])){
       $errors= array();
       $file_name = $_FILES['tourFile']['name'];
