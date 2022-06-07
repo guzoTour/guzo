@@ -122,14 +122,10 @@ body {
   );
   background-image: linear-gradient(to right, #7dd56f, #28b487);
   /*-webkit-background-clip: text;*/
-  /* color: transparent; */
+  color: transparent;
   letter-spacing: 0.1rem;
   line-height: 1.3;
   display: inline-block;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  color: white;
 }
 .heading-secondary--error {
   background-image: -webkit-gradient(
@@ -141,7 +137,6 @@ body {
   );
   background-image: linear-gradient(to right, #ff7730, #eb4d4b);
   font-size: 3.5rem;
-
 }
 
 .heading-primary,
@@ -323,9 +318,7 @@ body {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
-    
-
-    /* flex-direction: column; */
+    flex-direction: column;
   }
 }
 .header__logo img {
@@ -342,7 +335,7 @@ body {
 
 .section-header {
   position: relative;
-  height: 20vw;
+  height: 38vw;
   clip-path: polygon(
     0 0,
     100% 0,
@@ -434,7 +427,7 @@ body {
 
 .section-description {
   background-color: #fcfcfc;
-  margin-top: 0px;
+  margin-top: calc(0px - var(--section-rotate));
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -547,8 +540,7 @@ body {
 .section-map {
   position: relative;
   height: 65rem;
-  margin-top:0px;
- overflow-x: hidden;
+  margin-top: calc(0px - var(--section-rotate));
 }
 
 #map {
@@ -580,7 +572,7 @@ body {
 }
 
 .section-reviews {
-  margin-top: 0px;
+  margin-top: calc(0px - var(--section-rotate));
   padding: calc(5rem + var(--section-rotate)) 0;
   position: relative;
   z-index: 1000;
