@@ -1,5 +1,13 @@
 <?php
   session_start();
+
+  include "../../utils/prevent.php";
+  isAuthenticated();
+  if(isset($_SESSION['changedPassword'])){
+    echo "<script>alert('Password changed sucessefully')</script>";
+    unset($_SESSION['changedPassword']);
+  }
+
   $booking = " ";
   $profile = " ";
   $logout = " ";
@@ -20,14 +28,11 @@ if (mysqli_query($conn, $sql)) {
    }
 
     if(isset($_SESSION["username"])){
-    $booking = "Booking";
-    $profile = "Profile";
-    $logout = "Log Out";
-    $login = "";
-    $signup = "";
-
-
-
+        $booking = "Booking";
+        $profile = "Profile";
+        $logout = "Log Out";
+        $login = "";
+        $signup = "";
         include "../../config/config.php";
         $user_name = $_SESSION["username"];
         $sql = "SELECT * FROM user WHERE username = '$user_name'";
@@ -52,7 +57,7 @@ if (mysqli_query($conn, $sql)) {
     }
     if (isset($_POST['upload'])) {
         include "../../utils/uploadImage.php";
-        uploadImage("../../multimedia/img/users/","profileImage",56);
+        uploadImage("../../multimedia/img/users/","profileImage",34);
     }
        
 ?>
@@ -139,8 +144,9 @@ if (mysqli_query($conn, $sql)) {
           <button class="upload uploads" id="goto-edit-profile">Edit Profile</button>
           <input class="upload editProfile"  type="submit" name="edit" id="submitChangeBtn" disabled=true>
         </form>
+        <button class="upload rbtn disablers" id="changepassword"><a href="./changePassword.php">Change Password</a></button>;
         <?php
-   
+    
               // if($role==="admin"){
               //     echo '<button class="upload disablers" id="goto-edit-profile"><a href="../controller/editTour.php">Edit Tour</a></button>';
               //     echo '<button class="upload disablers" id="goto-edit-profile"><a href="./add_tour.php">Add Tour</a></button>';
