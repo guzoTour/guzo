@@ -42,6 +42,7 @@
                         unset($_SESSION['attempt']);
                         $_SESSION["username"]=$row["username"];
                         $_SESSION["email"]=$row["email"];
+                        $_SESSION["user_id"]=$row["user_id"];
                         $_SESSION["role"]=$row["role"];
                         //Add to log file
                         $file3 = fopen('../../files/queryReport.log','a');

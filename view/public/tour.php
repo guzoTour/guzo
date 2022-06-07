@@ -481,31 +481,7 @@ echo '</div> </div>';
             ///////////////////////////////////////////////////////
             /////////////////////booking controller/////////////////
             
-            if(isset($_POST["sub"])){
-                if($user_id!=""){
-                  $bookSql="INSERT INTO `booking` (`tour_id`, `user_id`, `piad`, `Created_at`) VALUES ('$tour_id', '$user_id', '1', current_timestamp());";
-                  
-                  try{
-                   mysqli_query($conn, $bookSql);
-                    echo '<script>alert("Booking is done  Thank You")</script>';
-
-                  }catch(Exception $err){
-                  echo '<script>alert("oops!! You are already registerd for this tour")</script>';
-
-                         }
-
-
-                }
-                else{
-                  echo '<script>alert("oops!! login first")</script>';
-                   
-                  // header("location:../shared/login.php");
-                
-
-                }
-
-
-            } 
+          
 
              ///////////////////booking controller ////////////////
             ///////////////////////////////////////////////////////
@@ -525,7 +501,7 @@ echo '</div> </div>';
           
                echo '<p class="cta__text">'.$duration .'days. 1 adventure. Infinite memories. Make it yours today!</p>';
                echo '<p class="cta__text">---'.$left.' place left</p>';
-               echo ' <form action="" method="post"><button name="sub" class="btn btn--green span-all-rows">Book tour now!</button></form>';      
+               echo ' <form action="../../controller/bookingController/bookingController.php?tour_id='.$tour_id.'" method="post"><button name="sub" class="btn btn--green span-all-rows">Book tour now!</button></form>';      
           }   
           
             else{

@@ -1,5 +1,11 @@
 <?php
   session_start();
+  if(isset($_SESSION["booked"])){
+     echo '<script>alert("Booking is done  Thank You")</script>';
+     unset($_SESSION["booked"]);
+
+
+  }
   $booking = " ";
   $profile = " ";
   $logout = " ";

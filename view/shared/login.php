@@ -1,3 +1,17 @@
+
+<?php 
+  if(isset($_SESSION["notlogged"])){
+
+ echo '<script>alert("oops!! login first")</script>';
+
+ unset($_SESSION["notlogged"]);
+
+  }
+
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
