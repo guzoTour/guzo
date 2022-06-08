@@ -48,13 +48,15 @@ if (mysqli_num_rows($result) > 0) {
     $start=$row["start_date"];
     $raters=$row["rating_quantity"];
     $rating=$row["rating"];
+    $image = $row["images"];
+    $cover_image = $row["cover_image"];
     // $region = $row["region"]
     $s2=<<<DDD
     <div class="card">
     <div class="card__header">
     <div class="card__picture">
     <div class="card__picture-overlay">&nbsp;</div>
-    <img src="./multimedia/img/tours/tour-$tour_id-cover.jpg" alt="$tour_id" class="card__picture-img"
+    <img src="./multimedia/img/tours/$cover_image" alt="$tour_id" class="card__picture-img"
               />
              </div>
               <h3 class="heading-tertirary">
