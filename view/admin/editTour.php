@@ -167,44 +167,45 @@
                 </form>
                 EOT;
                 echo "$s2";
-            }
-           
-            ?>
+              }
+              
+              ?>
             <div class="uploadImage">
-
-<div class="form1">
-    <form  method="POST" action="#" enctype="multipart/form-data" id = "photo">
-      <input type="file" name="uploadfile"  id = "fileupload1" style = "display:none"value="" required/>
-        
-      <div>
-          <button class="imbtn" type="submit" name="upload" value ="true" id = "filee" onclick = "diplayImageForm('filee')" >Upload Cover <br> Image</button>
-        </div>
-        <div>
-          <button class="imbtn" type="submit" name="upload1" value ="true" style = "display:none" id = "filebtn1" >Submit Cover</button>
-        </div>
-  </form> 
-  </div>
-  <div class="form2">
-
-  
-  <form  method="POST" action="#" enctype="multipart/form-data" id = "photo">
-      <input type="file" name="uploadfile"  id = "fileupload2" style = "display:none"value="" required/>
-        
-      <div>
-          <button class="imbtn" type="submit" name="upload" value ="true" id = "fileee" onclick = "diplayImageForm('fileee')" >Upload Image</button>
-        </div>
-        <div>
-          <button class="imbtn" type="submit" name="upload2" value ="true" style = "display:none" id = "filebtn2" >Submit Image</button>
-        </div>
-  </form> 
-</div>
-  </div>
-        </div>
-        <div>
-    </div>
-    <div class="section-reviewss"></div>
-
-  <script>
+              
+              <div class="form1">
+                <form  method="POST" action="#" enctype="multipart/form-data" id = "photo">
+                  <input type="file" name="uploadfile"  id = "fileupload1" style = "display:none"value="" required/>
+                  
+                  <div>
+                    <button class="imbtn" type="submit" name="upload" value ="true" id = "filee" onclick = "diplayImageForm('filee')" >Upload Cover <br> Image</button>
+                  </div>
+                  <div>
+                    <button class="imbtn" type="submit" name="upload1" value ="true" style = "display:none" id = "filebtn1" >Submit Cover</button>
+                  </div>
+                </form> 
+              </div>
+              <div class="form2">
+                
+                
+                <form  method="POST" action="#" enctype="multipart/form-data" id = "photo">
+                  <input type="file" name="uploadfile"  id = "fileupload2" style = "display:none"value="" required/>
+                  
+                  <div>
+                    <button class="imbtn" type="submit" name="upload" value ="true" id = "fileee" onclick = "diplayImageForm('fileee')" >Upload Image</button>
+                  </div>
+                  <div>
+                    <button class="imbtn" type="submit" name="upload2" value ="true" style = "display:none" id = "filebtn2" >Submit Image</button>
+                  </div>
+                </form> 
+              </div>
+            </div>
+          </div>
+          <div>
+            </div>
+            <div class="section-reviewss"></div>
+            
+            
+            <script>
      function diplayImageForm(id){
     document.getElementById(id).style.display = "none";
       if(id=='filee'){

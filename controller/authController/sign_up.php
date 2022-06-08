@@ -1,7 +1,8 @@
 <?php
-
+ session_start();
+  include "../../utils/prevent.php";
+  isNotLogged();
 if(isset($_POST["register"])){
-
 
     include "../../config/config.php";
 
@@ -17,13 +18,12 @@ if(isset($_POST["register"])){
       echo $err;
     }
     $sql = "INSERT INTO user (last_name, first_name, email, phone_number,pw, username) VALUES ('$last_name','$first_name','$email', '$phone', '$password', '$user_name')";
-    $query = "\n".date("Y/m/d:h:i")."   User  Note    ".$user_name." has signuped";
     if (mysqli_query($conn, $sql)) {
-      session_start();
       $to = $email;
       $subject = "Reset Error";
       
       //Add to log file
+      $query = "\n".date("Y/m/d:h:i")."   User  Note    ".$user_name." has signuped";
       $file3 = fopen('../../files/queryReport.log','a');
       if($file3){
         fwrite($file3,$query);
