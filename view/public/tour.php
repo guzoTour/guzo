@@ -60,7 +60,7 @@
        $difficulty = $row["difficulty"];
        $group_size = $row["group_size"];
        $summary = $row["summary"];
-       $desciptions = $row["description"];
+       $desciptions = $row["descriptions"];
        $price = $row["price"];
        $region = $row["region"];
        $town = $row["town"];

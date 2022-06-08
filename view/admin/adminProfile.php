@@ -9,9 +9,16 @@
     echo "<script>alert('Password changed sucessefully')</script>";
     unset($_SESSION['changedPassword']);
   }
+  if(isset($_SESSION["tourAdded"])){
+    if($_SESSION["tourAdded"]){
+      echo  '<script> window.alert("Tour is added sucessfuly")</script>'; 
+      unset($_SESSION["tourAdded"]);
+    }
+  }
   if(isset($_SESSION["tourDeleted"])){
     if($_SESSION["tourDeleted"]){
       echo  '<script> window.alert("Tour is deleted sucessfuly")</script>'; 
+      unset($_SESSION["tourDeleted"]);
     }
   }
   $booking = " ";

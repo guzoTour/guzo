@@ -34,6 +34,7 @@
                        fwrite($file3,$query);
                        fclose($file3);   
                    }
+                   $_SESSION["tourDeleted"] = true;
                    header("location:../../view/admin/adminProfile.php");
                }
             }
