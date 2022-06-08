@@ -510,7 +510,7 @@ if($role!="admin"){
     
         <div class="cta__content">
           <h2 class="heading-secondary">Comment Now</h2>
-          <form action=../controller/reviewController/review.php?tour_id=$tour_id&tour_name=$tour_name method='post'>
+          <form action=../../controller/reviewController/review.php?tour_id=$tour_id&tour_name=$tour_name method='post'>
              
        <textarea name="comments" id="comment" cols="30" rows="10"></textarea>
         <h2 class="heading-secondary">Rate Now</h2>

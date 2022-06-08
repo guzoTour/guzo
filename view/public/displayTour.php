@@ -79,7 +79,7 @@ if (mysqli_num_rows($result) > 0) {
             <svg class="card__icon">
               <use xlink:href="img/icons.svg#icon-flag"></use>
             </svg>
-            <span>From mexico </span>
+            <span>From AA  </span>
           </div>
           <div class="card__data">
             <svg class="card__icon">
