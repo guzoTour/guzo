@@ -113,6 +113,14 @@
         <!-- <a href="#" class="nav__el"><?php echo $booking?></a> -->
         <a href="../shared/profile.php" class="nav__el">
         <?php 
+        if($user_role=="admin"){
+        echo '<a href="../admin/adminProfile.php" class="nav__el">';
+
+      }
+      else{
+        echo '<a href="../shared/profile.php" class="nav__el">';
+
+      }
         if(isset($_SESSION["username"])){
           $filepath = "<img src = "."../../multimedia/img/users/".$photo." class='nav__user-img'.".">";
           //alt="User photo" class="nav__user-img"

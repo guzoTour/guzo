@@ -60,7 +60,7 @@
        $difficulty = $row["difficulty"];
        $group_size = $row["group_size"];
        $summary = $row["summary"];
-       $desciptions = $row["descriptions"];
+       $desciptions = $row["description"];
        $price = $row["price"];
        $region = $row["region"];
        $town = $row["town"];
@@ -99,7 +99,7 @@
     />
 
     <link rel="stylesheet" href="../../css/style.css" />
-    <link rel="shortcut icon" type="image/png" href="../../../multimedia/img/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="../../multimedia/img/favicon.png" />
 
     <title>Guzo Tours | <?php echo $tour_name?></title>
 
