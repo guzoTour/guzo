@@ -1,34 +1,20 @@
 <?php
+  //Controll wheather the user is or not logged
   session_start();
+  include "./config/config.php";
+
   if(isset($_SESSION["booked"])){
-      unset($_SESSION["booked"]);
-     echo '<script>alert("Booking is done  Thank You")</script>';
-
-
+    unset($_SESSION["booked"]);
+    echo '<script>alert("Booking is done  Thank You")</script>';
   }
-
   if(isset($_SESSION["bookeds"])){
     unset($_SESSION["bookeds"]);
-     echo '<script>alert("u are already booked Thank You")</script>';
-
-     
+    echo '<script>alert("u are already booked Thank You")</script>';  
   }
-  $booking = " ";
-  $profile = " ";
-  $logout = " ";
-  $login = "Login";
-  $signup = "Sign up";
   if(isset($_SESSION["username"])){
-    $booking = "Booking";
-    $profile = "Profile";
-    $logout = "Log Out";
-    $login = "";
-    $signup = "";
-
-    include "./config/config.php";
-        $user_name = $_SESSION["username"];
-        $sql = "SELECT* FROM user WHERE username = '$user_name'";
-        
+  
+    $user_name = $_SESSION["username"];
+    $sql = "SELECT* FROM user WHERE username = '$user_name'";   
     try{
       $mydata = mysqli_query($conn, $sql);
       $row = $mydata->fetch_assoc();
@@ -38,10 +24,9 @@
       $email = $row["email"];
       $phone_number = $row["phone_number"];
       $photo = $row["photo"];
-  }catch(Exception $err){
-      echo $err;
-  }
-
+    }catch(Exception $err){
+        echo $err;
+    }
   }
 ?>
 <!DOCTYPE html>
@@ -63,13 +48,12 @@
   </head>
   <body>
   <header class="header">
-  <nav class="nav nav--tours">
+    <nav class="nav nav--tours">
         <a href="index.php" class="nav__el">All tours</a>
-          <li class="hov">  <button class="nav__search-btn">
-            <svg>
-              <use xlink:href="img/icons.svg#icon-search"></use>
-            </svg>
-        <form method="get" action="" class="nav__search">
+        <li class="hov"> 
+          <button class="nav__search-btn">
+            <svg><use xlink:href="img/icons.svg#icon-search"></use></svg>
+            <form method="get" action="" class="nav__search">
           </button> Search by
         <ul class="seleter">
                   <li><input type="radio" value="tour_name"  checked name="searchBy"/><span >name</span ></li>
@@ -79,11 +63,11 @@
                   <li ><input type="radio" value="direction" name="searchBy" /><span >direction</span ></li>
                   <li ><input type="radio" value="difficulty" name="searchBy" /><span >difficulty</span ></li>
                   <li ><input type="radio" value="duration" name="searchBy" /><span >duration</span ></li>
-                   <li ><label for="region">price</label></li>
+                  <li ><label for="region">price</label></li>
                   <li ><input type="radio" id="greater" value=">=" name="searchBy" /><label for="greater">greater </label></li>
                   <li ><input type="radio" id="less" value="<=" name="searchBy" /><label for="less">less</label></li>
         </ul>
-  </li>
+      </li>
           </ul>
           <input
             type="text"
@@ -96,7 +80,7 @@
         </form>
       </nav>
       <div class="header__logo">
-        <img src="./multimedia/img/logo-white.png" alt="Natours logo" />
+        <img src="./multimedia/img/logo-white.png" alt="Guzo tour logo" />
       </div>
       <nav class="nav nav--user">        
         <?php 
@@ -104,24 +88,20 @@
           $role = $_SESSION["role"];
           if($role=="admin"){
             echo '<a href="view/admin/adminProfile.php" class="nav__el">';
-    
           }
           else{
             echo '<a href="view/shared/profile.php" class="nav__el">';
           }
           $filepath = "<img src = "."multimedia/img/users/".$photo." class='nav__user-img'.".">";
           //alt="User photo" class="nav__user-img"
-          echo $filepath;
-        
-
+          echo $filepath.'</a>';
+          echo '<a href="controller/authController/log_out.php" class="nav__el">Logout</a>';
+        }else{
+          echo '<a href="./view/shared/login.php" class="nav__el">Login</a>';
+          echo '<a href="./view/shared/register.php" class="nav__el">Sign Up</a>';
         }
         ?>
-        </a>
-        <a href="controller/authController/log_out.php" class="nav__el"><?php echo $logout?></a>
-        <a href="./view/shared/login.php" class="nav__el"><?php echo $login?></a>
-        <a href="./view/shared/register.php" class="nav__el"><?php echo $signup?></a>
-         
-      </nav>
+    </nav>
  </header>
     <section class="overview" id="overview">
       <div class="card-container">
@@ -154,105 +134,93 @@ include('./view/public/displayTour.php');
 
     <script src="./javascrift/js.js"></script>
     <style>
-.footer__logo{
-display: flex;
-justify-content: center;
-align-items: center;
-
-}
-.footer__logo span{
-font-size: 20px;
-margin-left: 10px;
-
-}
-
-      .btnsub{
-      background: none;
-      border: none
-      ;
-
+      .footer__logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
-      ul,li{
- 
-}
-.seleter {
-background-color: #444;
-  
-}
-.seleter li{
-  list-style:none;
-  width:100px;
-  padding: 2px 7px;
-  border: none;
-  height: 30px;
-  line-height: 30px;
-  -webkit-transition: all .5s ease-in-out;
-  display: flex;
-  /* justify-content: center; */
-  align-items: center;
-  
-}
+      .footer__logo span{
+        font-size: 20px;
+        margin-left: 10px;
+      }
+      .btnsub{
+        background: none;
+        border: none;
+      }
+      .seleter {
+        background-color: #444;
+      }
+      .seleter li{
+        list-style:none;
+        width:100px;
+        padding: 2px 7px;
+        border: none;
+        height: 30px;
+        line-height: 30px;
+        -webkit-transition: all .5s ease-in-out;
+        display: flex;
+        /* justify-content: center; */
+        align-items: center;
+      }
 
-.seleter li:nth-child(odd){
-  
-  -webkit-transform-origin: top;
-  -webkit-transform: perspective(350px) rotateX(-90deg);
-}
+      .seleter li:nth-child(odd){
+        
+        -webkit-transform-origin: top;
+        -webkit-transform: perspective(350px) rotateX(-90deg);
+      }
 
-.seleter li:nth-child(even){
-   margin-top:-65px;
-  -webkit-transform-origin: bottom;
-  -webkit-transform: perspective(350px) rotateX(90deg);
-}
+      .seleter li:nth-child(even){
+        margin-top:-65px;
+        -webkit-transform-origin: bottom;
+        -webkit-transform: perspective(350px) rotateX(90deg);
+      }
 
-/*.seleter{
-  
-  -webkit-transition: all .5s ease-in-out;
-  -webkit-transform-origin: 50% 0%;
-  -webkit-transform: perspective(350px) rotateX(-90deg);
-}
+      /*.seleter{
+        
+        -webkit-transition: all .5s ease-in-out;
+        -webkit-transform-origin: 50% 0%;
+        -webkit-transform: perspective(350px) rotateX(-90deg);
+      }
 
-.hov:hover .seleter{
-  
-  -webkit-transform-origin: top;
-  -webkit-transform: perspective(350px) rotateX(0deg);
-}*/
+      .hov:hover .seleter{
+        
+        -webkit-transform-origin: top;
+        -webkit-transform: perspective(350px) rotateX(0deg);
+      }*/
 
-.hov:hover li:nth-child(odd){
-  -webkit-transform-origin: top;
-  -webkit-transform: perspective(350px) rotateX(0deg);
-  margin-top:0;
-}
+      .hov:hover li:nth-child(odd){
+        -webkit-transform-origin: top;
+        -webkit-transform: perspective(350px) rotateX(0deg);
+         margin-top:0;
+      }
 
-.hov:hover li:nth-child(even){
-  -webkit-transform-origin: bottom;
-  -webkit-transform: perspective(350px) rotateX(0deg);
-   margin-top:0;
-}
+      .hov:hover li:nth-child(even){
+        -webkit-transform-origin: bottom;
+        -webkit-transform: perspective(350px) rotateX(0deg);
+         margin-top:0;
+      }
 
-.seleter li:first-child{
-  margin-top:0;
-}
-.card-container{
-margin-top: 80px;
-
-}
-
-.hov{
-  position:relative;
-  height: 40px;
-  width:112px;
-  background:none;
-  color: white;
-  font-size: 13px;
-  font-family: Helvetica;
-  font-weight:bold;
-  text-align: center;
-  line-height: 40px;
-  list-style:none;
-  z-index:2;
-  
-}
+      .seleter li:first-child{
+        margin-top:0;
+      }
+      .card-container{
+       margin-top: 80px;
+      }
+      .hov{
+        position:relative;
+        height: 40px;
+        width:112px;
+        background:none;
+        color: white;
+        font-size: 13px;
+        font-family: Helvetica;
+        font-weight:bold;
+        text-align: center;
+        line-height: 40px;
+        list-style:none;
+        z-index:2;
+        
+      }
       #filter{
         display: none;
         background-color: #444;
@@ -276,16 +244,13 @@ margin-top: 80px;
         color: gainsboro;
 
       }
-
       .ficon{
-  font-size: 25px;
-  color: #ddd;
-
+        font-size: 25px;
+        color: #ddd;
       }
-   #filter-btn:hover ul{
+      #filter-btn:hover ul{
         display: block;
         position: absolute;
-       
       }
     </style>
   </body>

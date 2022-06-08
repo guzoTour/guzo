@@ -1,7 +1,7 @@
 <?php
-
     session_start();
     include "../../config/config.php";
+    //Controll wheather the user is or not logged
     $booking = " ";
     $profile = " ";
     $logout = " ";
@@ -14,33 +14,32 @@
      }
      else{
      $role="none";
-
      }
     if(isset($_SESSION["username"])){
-      $booking = "Booking";
-      $profile = "Profile";
-      $logout = "Log Out";
-      $login = "";
-      $signup = "";
-    
+        $booking = "Booking";
+        $profile = "Profile";
+        $logout = "Log Out";
+        $login = "";
+        $signup = "";
         $user_name = $_SESSION["username"];
         $user_role = $_SESSION["role"];
         $sql = "SELECT* FROM user WHERE username = '$user_name'";
-        
-    try{
-      $mydata = mysqli_query($conn, $sql);
-      $row = $mydata->fetch_assoc();
-      $user_id=$row["user_id"];
-      $user_name = $row["username"];
-      $first_name = $row["first_name"];
-      $last_name = $row["last_name"];
-      $email = $row["email"];
-      $phone_number = $row["phone_number"];
-      $photo = $row["photo"];
-  }catch(Exception $err){
-      echo $err;
+      //fetch the user data to show his data on nav bar and for booking and review purpose
+      
+      try{
+          $mydata = mysqli_query($conn, $sql);
+          $row = $mydata->fetch_assoc();
+          $user_id=$row["user_id"];
+          $user_name = $row["username"];
+          $first_name = $row["first_name"];
+          $last_name = $row["last_name"];
+          $email = $row["email"];
+          $phone_number = $row["phone_number"];
+          $photo = $row["photo"];
+        }catch(Exception $err){
+            echo $err;
+        }
   }
-    }
 
    $url = $_SERVER["REQUEST_URI"];
    $bools="f";
@@ -49,7 +48,7 @@
    $tour_name = $results['tour_name'];
    $bools = $results['bool'];
    
-   //echo gettype($tour_id);
+   
    $sql = "SELECT * FROM tour INNER JOIN address ON tour.tour_id = address.tour_id WHERE tour_name = '$tour_name'";
    $result = mysqli_query($conn, $sql);
    if (mysqli_num_rows($result) > 0){
@@ -61,28 +60,30 @@
        $difficulty = $row["difficulty"];
        $group_size = $row["group_size"];
        $summary = $row["summary"];
+       $desciptions = $row["descriptions"];
        $price = $row["price"];
-      //  $discount = $row["discount"];
        $region = $row["region"];
        $town = $row["town"];
        $direction = $row["direction"];
        $start_date = $row["start_date"];
        $raters=$row["rating_quantity"];
        $rating=$row["rating"];
+       $image = $row["images"];
+       $cover_image = $row["cover_image"];
 
        $_SESSION["display"] = true;
 
-    $count="SELECT COUNT(*) FROM booking WHERE tour_id=$tour_id;";
-    $cResult = mysqli_query($conn, $count);
-    $data=mysqli_fetch_assoc($cResult);
-    $count= $data['COUNT(*)'];
+       $count="SELECT COUNT(*) FROM booking WHERE tour_id=$tour_id;";
+       $cResult = mysqli_query($conn, $count);
+       $data=mysqli_fetch_assoc($cResult);
+       $count= $data['COUNT(*)'];
 
    }
    else{
         echo "Ther is no Tour with this name";
    }
 
- 
+
      header("#comments");
 ?>
 
@@ -126,7 +127,7 @@
         </form>
       </nav>
       <div class="header__logo">
-        <img src="../../multimedia/img/logo-white.png" alt="Natours logo" />
+        <img src="../../multimedia/img/logo-white.png" alt="Guzo tour logo" />
       </div>
       <nav class="nav nav--user">
         <!-- <a href="#" class="nav__el"><?php echo $booking?></a> -->
@@ -225,15 +226,10 @@
         <h2 class="heading-secondary ma-bt-lg">About the <?php echo $tour_name ?> tour</h2>
         <p class="description__text">
           <?php
-           echo    $summary;
-          
+          //  echo    $summary;
+           echo $desciptions;
           ?>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur.
+         
         </p>
  
       </div>
@@ -431,9 +427,6 @@ echo '</div> </div>';
     }catch(Exception $e){
 
     }
-
-    
-    
     ?>
     </div> 
     </section>
@@ -441,16 +434,16 @@ echo '</div> </div>';
     <section class="section-cta">
       <div class="cta">
         <div class="cta__img cta__img--logo">
-          <img src="../../multimedia/img/logo-white.png" alt="Natours logo" class="" />
+          <img src="../../multimedia/img/logo-white.png" alt="Guzo tour  logo" class="" />
         </div>
-        <img src="../../multimedia/img/tours/tour-1-1.jpg" alt="" class="cta__img cta__img--1" />
-        <img src="../../multimedia/img/tours/tour-1-2.jpg" alt="" class="cta__img cta__img--2" />
-
-
+        <?php
+        $im=<<<imm
+        <img src="../../multimedia/img/tours/$image" alt="" class="cta__img cta__img--1" />
+        <img src="../../multimedia/img/tours/$image" alt="" class="cta__img cta__img--2" />
+        imm;
+        echo $im;
+        ?>
         <div class="cta__content" id="comments">
-
-
-         
           <div>
             <?php
             if($bools=="true"){
