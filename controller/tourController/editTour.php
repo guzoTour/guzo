@@ -1,14 +1,14 @@
 <?php
-
-  if(isset($_POST["form2"])){
-          
-   $url = $_SERVER["REQUEST_URI"];
-   $components = parse_url($url);
-      parse_str($components['query'], $results);
-   $tour_id = $results['id'];
-   $tour_id =(int) $tour_id ;
-    echo $tour_id;
-        
+    session_start();
+    include "../../utils/prevent.php";
+    isAuthenticated();
+    isAuthorzied();
+  if(isset($_POST["form2"])){    
+        $url = $_SERVER["REQUEST_URI"];
+        $components = parse_url($url);
+        parse_str($components['query'], $results);
+        $tour_id = $results['id'];
+        $tour_id =(int) $tour_id ;
         $tour_name = $_POST["name"];
         $duration = $_POST["duration"];
         $group_size = $_POST["group"];

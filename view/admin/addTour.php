@@ -1,9 +1,8 @@
 <?php
-if(isset($_SESSION["username"])){
-    if($_SESSION["role"]!="admin"){
-        header("location:../index.php");
-    }
-}
+    session_start();
+    include "../../utils/prevent.php";
+    isAuthenticated();
+    isAuthorzied();
 ?><!doctype html>
 <html>
 <head>

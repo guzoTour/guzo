@@ -1,6 +1,5 @@
 <?php
 
-//header("location:http://localhost:7882/guzo/view/shared/login.php");
   session_start();
   include "../../utils/prevent.php";
   isAuthenticated();
@@ -10,6 +9,11 @@
     echo "<script>alert('Password changed sucessefully')</script>";
     unset($_SESSION['changedPassword']);
   }
+  if(isset($_SESSION["tourDeleted"])){
+    if($_SESSION["tourDeleted"]){
+      echo  '<script> window.alert("Tour is deleted sucessfuly")</script>'; 
+    }
+  }
   $booking = " ";
   $profile = " ";
   $logout = " ";
@@ -17,13 +21,13 @@
   $signup = "Sign up";
      include "../../config/config.php";
 
-$Toursql="SELECT `tour_name` , `group_size` FROM `tour`";
+  $Toursql="SELECT `tour_name` , `group_size` FROM `tour`";
 
-$result = mysqli_query($conn, $Toursql);
-$Torus=array();
-$group=array();
-$total=0;
-$totalbookspace=0;
+  $result = mysqli_query($conn, $Toursql);
+  $Torus=array();
+  $group=array();
+  $total=0;
+  $totalbookspace=0;
 if (mysqli_num_rows($result) > 0) {
   // output data of each row
   while($row = mysqli_fetch_assoc($result)) {
@@ -51,7 +55,7 @@ if (mysqli_num_rows($result) > 0) {
 
     $todays=" SELECT COUNT(*) FROM `booking` WHERE Created_at='$date';";
     $cResultto = mysqli_query($conn, $todays); 
-   $datas=mysqli_fetch_assoc($cResultto);
+    $datas=mysqli_fetch_assoc($cResultto);
     $countday= $datas['COUNT(*)'];
 
     $count="SELECT COUNT(*) FROM booking";
@@ -61,8 +65,6 @@ if (mysqli_num_rows($result) > 0) {
    
    if(isset($_POST["edit"])){
        
-        // include "../../utils/uploadImage.php";
-        // uploadImage("../../multimedia/img/users/","profileImage",56);
         $firstname = $_POST['first_name'];
         $lastname = $_POST["last_name"];
         $phone=$_POST["phone"];
@@ -83,27 +85,25 @@ if (mysqli_num_rows($result) > 0) {
     $logout = "Log Out";
     $login = "";
     $signup = "";
-
-        include "../../config/config.php";
-        $user_name = $_SESSION["username"];
-        $sql = "SELECT* FROM user WHERE username = '$user_name'";
-        $BOOKING;
-        try{
-            $mydata = mysqli_query($conn, $sql);
-            $row = $mydata->fetch_assoc();
-            $user_name = $row["username"];
-            $first_name = $row["first_name"];
-            $last_name = $row["last_name"];
-            $email = $row["email"];
-            $phone_number = $row["phone_number"];
-            $photo = $row["photo"];
-            $role = $row["role"];
+    include "../../config/config.php";
+    $user_name = $_SESSION["username"];
+    $sql = "SELECT* FROM user WHERE username = '$user_name'";
+    $BOOKING;
+    try{
+        $mydata = mysqli_query($conn, $sql);
+        $row = $mydata->fetch_assoc();
+        $user_name = $row["username"];
+        $first_name = $row["first_name"];
+        $last_name = $row["last_name"];
+        $email = $row["email"];
+        $phone_number = $row["phone_number"];
+        $photo = $row["photo"];
+        $role = $row["role"];
+        
+    }catch(Exception $err){
+        echo $err; mysqli_error($conn);        
+    }
             
-        }catch(Exception $err){
-            echo $err; mysqli_error($conn);        
-        }
-  
-       
 ?>
 
 <!DOCTYPE html>

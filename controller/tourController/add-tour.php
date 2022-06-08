@@ -1,13 +1,9 @@
 <?php
-
-    
     session_start();
-    if(!isset($_SESSION["username"])||$_SESSION["role"]!="admin"){
-        header("location:../../view/shared/login.php");
-    }
-    
+    include "../../utils/prevent.php";
+    isAuthenticated();
+    isAuthorzied();
     if(isset($_POST["submitTour"])){
-        echo "Hello world";
         include "../../config/config.php";
         $tour_name = filter_var($_POST['tour_name'], FILTER_SANITIZE_STRING);
         $duration = $_POST["duration"];

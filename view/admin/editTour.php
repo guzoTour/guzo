@@ -1,49 +1,40 @@
 <?php
-    session_start();
-   $_SESSION["display"] = false;
-  $booking = " ";
-  $profile = " ";
-  $logout = " ";
-  $login = "Login";
-  $signup = "Sign up";
-    //  if($_SESSION["role"]!="admin"){
-    //     header("location:../index.php");
-    // }
 
-     include "../../config/config.php";
+  session_start();
+  include "../../utils/prevent.php";
+  isAuthenticated();
+  isAuthorzied();
+  $_SESSION["display"] = false;
+
+  include "../../config/config.php";
 
  if(isset($_SESSION["username"])){
-      $booking = "Booking";
-      $profile = "Profile";
-      $logout = "Log Out";
-      $login = "";
-      $signup = "";
-        $user_name = $_SESSION["username"];
-        $user_role= $_SESSION["role"];
-        $sql = "SELECT* FROM user WHERE username = '$user_name'";
+      $user_name = $_SESSION["username"];
+      $user_role= $_SESSION["role"];
+      $sql = "SELECT* FROM user WHERE username = '$user_name'";
         
     try{
-      $mydata = mysqli_query($conn, $sql);
-      $row = $mydata->fetch_assoc();
-      $user_id=$row["user_id"];
-      $user_name = $row["username"];
-      $first_name = $row["first_name"];
-      $last_name = $row["last_name"];
-      $email = $row["email"];
-      $phone_number = $row["phone_number"];
-      $photo = $row["photo"];
-  }catch(Exception $err){
-      echo $err;
-  }
+        $mydata = mysqli_query($conn, $sql);
+        $row = $mydata->fetch_assoc();
+        $user_id=$row["user_id"];
+        $user_name = $row["username"];
+        $first_name = $row["first_name"];
+        $last_name = $row["last_name"];
+        $email = $row["email"];
+        $phone_number = $row["phone_number"];
+        $photo = $row["photo"];
+      }catch(Exception $err){
+          echo $err;
+      }
     }
 
     if(isset($_SERVER["REQUEST_URI"])){
 
-   $url = $_SERVER["REQUEST_URI"];
-   $components = parse_url($url);
-   parse_str($components['query'], $results);
-   $tour_id = $results['id'];
-    $tour_id =(int) $tour_id ;
+        $url = $_SERVER["REQUEST_URI"];
+        $components = parse_url($url);
+        parse_str($components['query'], $results);
+        $tour_id = $results['id'];
+        $tour_id =(int) $tour_id ;
 
         include('../../config/config.php');
         $sql = "SELECT * FROM tour INNER JOIN address ON tour.tour_id = address.tour_id WHERE tour.tour_id =$tour_id;";
@@ -110,17 +101,10 @@
         <img src="../../multimedia/img/logo-white.png" alt="Natours logo" />
       </div>
       <nav class="nav nav--user">
-        <!-- <a href="#" class="nav__el"><?php echo $booking?></a> -->
-        <a href="../shared/profile.php" class="nav__el">
+        
         <?php 
-        if($user_role=="admin"){
+
         echo '<a href="../admin/adminProfile.php" class="nav__el">';
-
-      }
-      else{
-        echo '<a href="../shared/profile.php" class="nav__el">';
-
-      }
         if(isset($_SESSION["username"])){
           $filepath = "<img src = "."../../multimedia/img/users/".$photo." class='nav__user-img'.".">";
           //alt="User photo" class="nav__user-img"
@@ -128,9 +112,8 @@
         }
         ?>
         </a>
-        <a href="../../controller/authController/log_out.php" class="nav__el"><?php echo $logout?></a>
-        <!-- <a href="../shared/login.php" class="nav__el"><?php echo $login?>ghg</a>
-        <a href="../shared/register.php" class="nav__el"><?php echo $signup?>fg</a>       -->
+        <a href="../../controller/authController/log_out.php" class="nav__el">Logout</a>
+        
       </nav>
  </header>
     <style>
