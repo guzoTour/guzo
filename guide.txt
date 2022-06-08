@@ -1,4 +1,4 @@
 The website landing page is index.php.  In index.php there are different links to destinations like login, signup, others. 
-When admin is logged in he land on admin profile page. In admin profile page admin can add,export, edit and delete tour. In addition admin can manupulate  his profile information
+When admin is logged in he land on admin dashboard page. In admin dashboard page admin can add,export, edit and delete tour. In addition admin can manupulate  his profile information
 When user is logged or registerd he land on user profile page. In user profile page user can cancel his review and can manupulate his information
 In index.php tours are displayed in card format in each tour card their is link to tour.php in which the detail of tour is displayed. In tour.php page an authenticated user can book and give review on tour
