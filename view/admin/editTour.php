@@ -113,6 +113,14 @@
         <!-- <a href="#" class="nav__el"><?php echo $booking?></a> -->
         <a href="../shared/profile.php" class="nav__el">
         <?php 
+        if($user_role=="admin"){
+        echo '<a href="../admin/adminProfile.php" class="nav__el">';
+
+      }
+      else{
+        echo '<a href="../shared/profile.php" class="nav__el">';
+
+      }
         if(isset($_SESSION["username"])){
           $filepath = "<img src = "."../../multimedia/img/users/".$photo." class='nav__user-img'.".">";
           //alt="User photo" class="nav__user-img"
@@ -179,31 +187,40 @@
             }
            
             ?>
+            <div class="uploadImage">
+
+<div class="form1">
+    <form  method="POST" action="#" enctype="multipart/form-data" id = "photo">
+      <input type="file" name="uploadfile"  id = "fileupload1" style = "display:none"value="" required/>
+        
+      <div>
+          <button class="imbtn" type="submit" name="upload" value ="true" id = "filee" onclick = "diplayImageForm('filee')" >Upload Cover <br> Image</button>
+        </div>
+        <div>
+          <button class="imbtn" type="submit" name="upload1" value ="true" style = "display:none" id = "filebtn1" >Submit Cover</button>
+        </div>
+  </form> 
+  </div>
+  <div class="form2">
+
+  
+  <form  method="POST" action="#" enctype="multipart/form-data" id = "photo">
+      <input type="file" name="uploadfile"  id = "fileupload2" style = "display:none"value="" required/>
+        
+      <div>
+          <button class="imbtn" type="submit" name="upload" value ="true" id = "fileee" onclick = "diplayImageForm('fileee')" >Upload Image</button>
+        </div>
+        <div>
+          <button class="imbtn" type="submit" name="upload2" value ="true" style = "display:none" id = "filebtn2" >Submit Image</button>
+        </div>
+  </form> 
+</div>
+  </div>
         </div>
         <div>
     </div>
     <div class="section-reviewss"></div>
 
-    <form  method="POST" action="#" enctype="multipart/form-data" id = "photo">
-      <input type="file" name="uploadfile"  id = "fileupload1" style = "display:none"value="" required/>
-        
-      <div>Upload Cover Image
-          <button type="submit" name="upload" value ="true" id = "filee" onclick = "diplayImageForm('filee')" >UPLOAD</button>
-        </div>
-        <div>
-          <button type="submit" name="upload1" value ="true" style = "display:none" id = "filebtn1" >Submit</button>
-        </div>
-  </form> 
-  <form  method="POST" action="#" enctype="multipart/form-data" id = "photo">
-      <input type="file" name="uploadfile"  id = "fileupload2" style = "display:none"value="" required/>
-        
-      <div> Upload Image
-          <button type="submit" name="upload" value ="true" id = "fileee" onclick = "diplayImageForm('fileee')" >UPLOAD</button>
-        </div>
-        <div>
-          <button type="submit" name="upload2" value ="true" style = "display:none" id = "filebtn2" >Submit</button>
-        </div>
-  </form> 
   <script>
      function diplayImageForm(id){
     document.getElementById(id).style.display = "none";
@@ -226,6 +243,25 @@
 #summary{
 width: 00px;
 height: 200px;
+
+}
+.uploadImage{
+display: flex;
+margin-top: 30px;
+
+}
+
+.imbtn{
+    background-color:#7dd56f;
+
+}
+
+.form2, .form1{
+  margin-left: 40px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color:#7dd56f;
+
 
 }
 .mainTour{

@@ -60,7 +60,7 @@
        $difficulty = $row["difficulty"];
        $group_size = $row["group_size"];
        $summary = $row["summary"];
-       $desciptions = $row["descriptions"];
+       $desciptions = $row["description"];
        $price = $row["price"];
        $region = $row["region"];
        $town = $row["town"];
@@ -99,7 +99,7 @@
     />
 
     <link rel="stylesheet" href="../../css/style.css" />
-    <link rel="shortcut icon" type="image/png" href="../../../multimedia/img/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="../../multimedia/img/favicon.png" />
 
     <title>Guzo Tours | <?php echo $tour_name?></title>
 
@@ -510,7 +510,7 @@ if($role!="admin"){
     
         <div class="cta__content">
           <h2 class="heading-secondary">Comment Now</h2>
-          <form action=../controller/reviewController/review.php?tour_id=$tour_id&tour_name=$tour_name method='post'>
+          <form action=../../controller/reviewController/review.php?tour_id=$tour_id&tour_name=$tour_name method='post'>
              
        <textarea name="comments" id="comment" cols="30" rows="10"></textarea>
         <h2 class="heading-secondary">Rate Now</h2>
