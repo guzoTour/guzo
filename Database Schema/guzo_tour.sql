@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2022 at 11:09 PM
+-- Generation Time: Jun 08, 2022 at 05:19 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -31,23 +31,25 @@ CREATE TABLE `address` (
   `tour_id` int(10) NOT NULL,
   `region` varchar(50) NOT NULL,
   `direction` varchar(50) NOT NULL,
-  `town` varchar(50) NOT NULL
+  `town` varchar(50) NOT NULL,
+  `x_cordinate` double NOT NULL DEFAULT 38.7694859836311,
+  `y_cordinate` double NOT NULL DEFAULT 8.995338660399943
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `address`
 --
 
-INSERT INTO `address` (`tour_id`, `region`, `direction`, `town`) VALUES
-(1, 'SNNP', 'North', 'bodity'),
-(3, 'SNNPwfc', 'Center', 'honbo'),
-(2, 'AA', 'Center', 'AA'),
-(4, 'SNNP', 'Center', 'sodo'),
-(5, 'Amhara', 'north', 'konbolcha'),
-(6, 'SNNP', 'East', 'hunbo'),
-(7, 'Center', 'Center', 'AA'),
-(8, 'tigray', 'north', 'aksum'),
-(10, 'addis ababa', 'center', 'addis ababa');
+INSERT INTO `address` (`tour_id`, `region`, `direction`, `town`, `x_cordinate`, `y_cordinate`) VALUES
+(1, 'SNNP', 'North', 'bodity', 38.7694859836311, 8.995338660399943),
+(2, 'AA', 'Center', 'AA', 38.7694859836311, 8.995338660399943),
+(3, 'SNNPwfc', 'Center', 'honbo', 38.7694859836311, 8.995338660399943),
+(4, 'SNNP', 'Center', 'sodo', 38.7694859836311, 8.995338660399943),
+(5, 'Amhara', 'north', 'konbolcha', 38.7694859836311, 8.995338660399943),
+(6, 'SNNP', 'East', 'hunbo', 38.7694859836311, 8.995338660399943),
+(8, 'tigray', 'north', 'aksum', 38.7694859836311, 8.995338660399943),
+(10, 'addis ababa', 'center', 'addis ababa', 38.7694859836311, 8.995338660399943),
+(11, 'debub', 'south', 'Arbaminch', 38.7694859836311, 8.995338660399943);
 
 -- --------------------------------------------------------
 
@@ -120,8 +122,8 @@ CREATE TABLE `tour` (
   `price` double NOT NULL,
   `discount` double NOT NULL,
   `summary` mediumtext NOT NULL,
-  `descriptions` text NOT NULL,
-  `cover_image` text NOT NULL,
+  `descriptions` longtext NOT NULL,
+  `cover_image` text NOT NULL DEFAULT 'default-cover.jpg',
   `images` text NOT NULL,
   `created_at` date DEFAULT current_timestamp(),
   `start_date` date DEFAULT current_timestamp(),
@@ -134,15 +136,15 @@ CREATE TABLE `tour` (
 --
 
 INSERT INTO `tour` (`tour_id`, `tour_name`, `duration`, `difficulty`, `group_size`, `price`, `discount`, `summary`, `descriptions`, `cover_image`, `images`, `created_at`, `start_date`, `rating_quantity`, `rating`) VALUES
-(1, 'Ajora', 6, 'easy', 45, 300.48, 12.3, 'It is a historical place where Emperor Menelik II resided and built his palace, when he came from Ankober and founded Addis Ababa. It is considered a sacred mountain and has many monasteries. \r\n\r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n', '', 'user-6.jpg', 'user-13.jpg', '2022-04-03', '2022-06-08', 1, 5),
-(2, 'Entoto ', 5, 'easy', 200, 300.48, 12.3, 'It is a historical place where Emperor Menelik II resided and built his palace, when he came f\r\n \r\n', '', '', '', '2022-04-03', '2022-04-07', 1, 4),
-(3, 'Lalibela', 50, 'easy', 20, 780.4, 12.3, 'It is a historical place where Emperor Menelik II resided and built his palace, when he came from Ankober and founded Addis Ababa. It is considered a sacred mountain and has many monasteries. Mount Entoto is also the location of a number of celebrated churches, including Saint Raguel and Saint Mary.[1]\r\n\r\nThe mountain is densely covered by eucalyptus trees that were imported from Australia during the reign of Menelik II, and mostly planted during Emperor Haile Selassie\'s reign. Thus, it is sometimes referred to as the \"lung of Addis Ababa\". The forest on the mountain is an important source of firewood for the city. It was also a source of building material in earlier times.\r\n\r\nThe Ethiopian Heritage Trust, a non-profit, non-governmental organization, is working actively to change part of the mountain to its old state, a natural park. Entoto Natural Park is the northeastern rim of Addis Abeba, on the southeastern slopes of Mt. Entoto, covering an area of 1,300 hectares. It is situated at an altitude of between 2,600 and 3,100 meters. Its annual average rainfall and temperature are 1200 mm and 14°C, respectively. The northern rim of the park serves as a watershed between the Abay (Blue Nile) and Awash rivers.', '', '', '', '2022-04-03', '2022-04-07', 2, 2),
-(4, 'awash', 2, 'easy', 24, 1000.4, 12.3, '', '', '', '', '2022-04-03', '2022-06-16', 1, 0),
-(5, 'bodity', 44, 'easy', 67, 78.4, 12.3, '', '', '', '', '2022-04-03', '2022-04-07', 0, 0),
-(6, 'Hawassa', 4, 'hard', 23, 89.9, 12.3, '', '', '', '', '2022-04-03', '2022-05-28', 2, 4.5),
-(7, 'omo', 5, 'hard', 12, 200, 12.3, 'omo is found in SNNP region .....', '', '', '', '2022-04-03', '2022-04-07', 0, 0),
-(8, 'Aksum', 45, 'mediu', 12, 12432, 324, '32564yu357ehydgj', 'sgrtyh67i8t9', '', '', '2022-06-06', '2022-06-06', 0, 0),
-(10, 'Andiet Park', 45, 'mediu', 20, 231589, 2134, 'sdfgvtkjrhlydtujyioy', 'zfdxgchvjmbklj', '', '', '2022-06-06', '2022-06-06', 0, 0);
+(1, 'Ajora', 6, 'easy', 45, 300.48, 12.3, 'It is a historical place where Emperor Menelik II resided and built his palace, when he came from Ankober and founded Addis Ababa. It is considered a sacred mountain and has many monasteries. \r\n\r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n \r\n', 'It is a historical place where Emperor Menelik II resided and built his palace, when he came from Ankober and founded Addis Ababa. It is considered a sacred mountain and has many monasteries.', 'default-cover.jpg', 'default.jpg', '2022-04-03', '2022-06-08', 1, 5),
+(2, 'Entoto ', 5, 'easy', 200, 300.48, 12.3, 'It is a historical place where Emperor Menelik II resided and built his palace, when he came f\r\n \r\n', 'It is a historical place where Emperor Menelik II resided and built his palace, when he came from Ankober and founded Addis Ababa. It is considered a sacred mountain and has many monasteries.', 'default-cover.jpg', 'default.jpg', '2022-04-03', '2022-04-07', 1, 4),
+(3, 'Lalibela', 50, 'easy', 20, 780.4, 12.3, 'It is a historical place where Emperor Menelik II resided and built his palace, when he came from Ankober and founded Addis Ababa. It is considered a sacred mountain and has many monasteries. Mount Entoto is also the location of a number of celebrated churches, including Saint Raguel and Saint Mary.[1]\r\n\r\nThe mountain is densely covered by eucalyptus trees that were imported from Australia during the reign of Menelik II, and mostly planted during Emperor Haile Selassie\'s reign. Thus, it is sometimes referred to as the \"lung of Addis Ababa\". The forest on the mountain is an important source of firewood for the city. It was also a source of building material in earlier times.\r\n\r\nThe Ethiopian Heritage Trust, a non-profit, non-governmental organization, is working actively to change part of the mountain to its old state, a natural park. Entoto Natural Park is the northeastern rim of Addis Abeba, on the southeastern slopes of Mt. Entoto, covering an area of 1,300 hectares. It is situated at an altitude of between 2,600 and 3,100 meters. Its annual average rainfall and temperature are 1200 mm and 14°C, respectively. The northern rim of the park serves as a watershed between the Abay (Blue Nile) and Awash rivers.', 'It is a historical place where Emperor Menelik II resided and built his palace, when he came from Ankober and founded Addis Ababa. It is considered a sacred mountain and has many monasteries.', 'default-cover.jpg', 'default.jpg', '2022-04-03', '2022-04-07', 2, 2),
+(4, 'awash', 2, 'easy', 24, 1200.4, 12.3, ' \r\n', 'It is a historical place where Emperor Menelik II resided and built his palace, when he came from Ankober and founded Addis Ababa. It is considered a sacred mountain and has many monasteries.', 'default-cover.jpg', 'default.jpg', '2022-04-03', '2022-06-16', 1, 0),
+(5, 'bodity', 44, 'easy', 67, 78.4, 12.3, '', 'It is a historical place where Emperor Menelik II resided and built his palace, when he came from Ankober and founded Addis Ababa. It is considered a sacred mountain and has many monasteries.', 'default-cover.jpg', 'default.jpg', '2022-04-03', '2022-04-07', 0, 0),
+(6, 'Hawassa', 4, 'hard', 23, 89.9, 12.3, '', 'It is a historical place where Emperor Menelik II resided and built his palace, when he came from Ankober and founded Addis Ababa. It is considered a sacred mountain and has many monasteries.', 'default-cover.jpg', 'default.jpg', '2022-04-03', '2022-05-28', 2, 4.5),
+(8, 'Aksum', 45, 'mediu', 12, 12432, 324, '32564yu357ehydgj', 'It is a historical place where Emperor Menelik II resided and built his palace, when he came from Ankober and founded Addis Ababa. It is considered a sacred mountain and has many monasteries.', 'default-cover.jpg', 'default.jpg', '2022-06-06', '2022-06-06', 0, 0),
+(10, 'Andiet Park', 45, 'mediu', 20, 231589, 2134, 'sdfgvtkjrhlydtujyioy', 'It is a historical place where Emperor Menelik II resided and built his palace, when he came from Ankober and founded Addis Ababa. It is considered a sacred mountain and has many monasteries.', 'default-cover.jpg', 'default.jpg', '2022-06-06', '2022-06-06', 0, 0),
+(11, 'Nech Sar', 23, 'mediu', 15, 7800, 500, 'Arbamich is amazing place to vist', 'It is a historical place where Emperor Menelik II resided and built his palace, when he came from Ankober and founded Addis Ababa. It is considered a sacred mountain and has many monasteries.', 'default-cover.jpg', 'default.jpg', '2022-06-07', '2022-06-07', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -169,14 +171,14 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `username`, `email`, `pw`, `phone_number`, `role`, `photo`) VALUES
 (20, 'bereket', 'alemu', 'samuel45', 'samuelnoah668@gmail.com', '$1$rasmusln$VRmqkC/fcX/jAQoS.7n2G1', '+2519450039393', 'user', 'user-9.jpg'),
 (35, 'samuel', 'noah', 'yosi89', 'samuelnfoah668@gmail.com', '$1$rasmusln$VRmqkC/fcX/jAQoS.7n2G1', '+2519043548347', 'user', 'default.jpg'),
-(36, 'selamu', 'dawit', 'selamudev', 'sol668@gmail.com', '$1$rasmusln$VRmqkC/fcX/jAQoS.7n2G1', '09047865', 'admin', 'user-9.jpg'),
+(36, 'selamu', 'dawit', 'selamudev', 'sol668@gmail.com', '$1$rasmusln$VRmqkC/fcX/jAQoS.7n2G1', '09047865', 'admin', 'user-17.jpg'),
 (38, 'Tesu', 'kedird', 'tesu56', 'samuelnompihceah668@gmail.com', '$1$rasmusln$VRmqkC/fcX/jAQoS.7n2G1', '+2519043898948', 'user', 'default.jpg'),
 (39, 'sami', 'noah', 'yo67', 'yordi@gmail.com', '$1$rasmusln$VRmqkC/fcX/jAQoS.7n2G1', '09450039393', 'admin', 'default.jpg'),
 (40, 'mulualem', 'noah', 'mulu34', 'emu@gmail.com', '$1$rasmusln$VRmqkC/fcX/jAQoS.7n2G1', '0935941496', 'user', 'default.jpg'),
 (42, 'yonata', 'tesfaye', 'yoni30', 'yonatantesfaye30@gmail.com', '$1$rasmusln$VRmqkC/fcX/jAQoS.7n2G1', '6875765', 'user', 'default.jpg'),
 (44, 'yonas', 'sisay', 'yos', 'yonimelkamu357@gmail.com', '$1$rasmusln$VRmqkC/fcX/jAQoS.7n2G1', '028474737', 'user', 'default.jpg'),
 (45, 'Abel', 'Alemayew', 'abu45', 'abel67@gmail.com', '$1$rasmusln$VRmqkC/fcX/jAQoS.7n2G1', '0934234565', 'user', 'default.jpg'),
-(48, 'Markoss', 'Bassa', 'markosbassa', 'mark@gmail.com', '$1$rasmusln$VRmqkC/fcX/jAQoS.7n2G1', '0987654322', 'user', 'user-12.jpg');
+(48, 'Markoss', 'Bassa', 'markosbassa', 'mark@gmail.com', '$1$rasmusln$VRmqkC/fcX/jAQoS.7n2G1', '0987654322', 'user', 'default.jpg');
 
 --
 -- Indexes for dumped tables
@@ -186,6 +188,7 @@ INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `username`, `email`, `
 -- Indexes for table `address`
 --
 ALTER TABLE `address`
+  ADD PRIMARY KEY (`tour_id`),
   ADD KEY `tour_id` (`tour_id`);
 
 --
@@ -234,7 +237,7 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT for table `tour`
 --
 ALTER TABLE `tour`
-  MODIFY `tour_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `tour_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -250,19 +253,21 @@ ALTER TABLE `user`
 -- Constraints for table `address`
 --
 ALTER TABLE `address`
-  ADD CONSTRAINT `address_ibfk_1` FOREIGN KEY (`tour_id`) REFERENCES `tour` (`tour_id`);
+  ADD CONSTRAINT `address_ibfk_1` FOREIGN KEY (`tour_id`) REFERENCES `tour` (`tour_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `booking`
 --
 ALTER TABLE `booking`
-  ADD CONSTRAINT `Fort` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+  ADD CONSTRAINT `tour is booked` FOREIGN KEY (`tour_id`) REFERENCES `tour` (`tour_id`),
+  ADD CONSTRAINT `user books` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `review`
 --
 ALTER TABLE `review`
-  ADD CONSTRAINT `new` FOREIGN KEY (`tour_id`) REFERENCES `tour` (`tour_id`);
+  ADD CONSTRAINT `new` FOREIGN KEY (`tour_id`) REFERENCES `tour` (`tour_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `user has review` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
