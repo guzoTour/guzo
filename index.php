@@ -119,6 +119,7 @@
         <div class="video-container">
             <video src="multimedia/video/hawassa.mp4" id="video-slider" loop autoplay muted></video>
         </div>
+        <div class= 'bg'></div>
 </div>
 
 <div class = 'book'>
@@ -391,6 +392,15 @@ section{
 .heading .space{
     background: none;
 }
+.bg{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 99vw;
+    height: 90vh;
+    background-color:rgba(0,0,0, 0.5);
+    z-index: -3;
+  }
     </style>
     <script>
         let searchBtn = document.querySelector('#search-btn');
