@@ -128,7 +128,20 @@ if (mysqli_num_rows($result) > 0) {
     <link rel="stylesheet" href="../../css/adminStyle.css" />
     <link rel="stylesheet" href="../../css/rate_style.css" />
     <link rel="shortcut icon" type="image/png" href="../../multimedia/img/favicon.png" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: '#da373d',
+          }
+        }
+      }
+    }
+  </script>
    
 
     <title>Guzo Tour</title>
@@ -165,29 +178,45 @@ if (mysqli_num_rows($result) > 0) {
  </header>
 
 
-  <div class="mainProfile">
+  <div class="mainProfile ">
 
 
-    <div class="profileImg">
-  <div class="leftD">
+    <div class="profileImg w-[21rem] ">
+  <div class=" ">
 
  
-    <ul>
+    <ul class = 'flex flex-col '>
       <li>
-        <button class="upload disablers" id="goto-edit-profile"><a href="#">Dashboard</a></button>
+        <button class="upload disablers pl-1" id="goto-edit-profile"><a href="#" class = 'flex  gap-x-2 items-center text-3xl'>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+        </svg>  
+        <span class ='pl-2 pr-2'>Dashboard</span></a></button>
       </li>
       <li>
 
-        <button class="upload rbtn disablers" id="goto-edit-profile"><a href="#">Profile</a></button>;
+        <button class="upload  disablers" id="goto-edit-profile"><a href="#" class = 'flex  gap-x-2 items-center text-3xl'>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+      </svg>
+        Profile</a></button>;
       </li>
      
        <li>
 
-        <button class="upload disablers" id="goto-edit-profile"><a href="./addTour.php">Add Tour</a></button>;
+        <button class="upload disablers" id="goto-edit-profile"><a href="./addTour.php" class = 'flex  gap-x-2 items-center text-3xl'>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+        </svg>    
+        Add Tour</a></button>;
       </li>
       <li>
 
-        <button class="upload disablers" id="goto-edit-profile"><a href="../../utils/exportTours.php">Export </a></button>;
+        <button class="upload disablers" id="goto-edit-profile"><a href="../../utils/exportTours.php" class = 'flex  gap-x-2 items-center text-3xl'> 
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+      </svg>  
+        Export </a></button>;
       </li>
       
 
@@ -203,27 +232,27 @@ if (mysqli_num_rows($result) > 0) {
         <div>
     <div class="tourTotalIfo">
 
-      <div class="TotalTour">
-     <h1> <i class="fa-solid fa-van-shuttle"></i> Total Tour</h1> <h1><?php echo "$total  Tour are active";  ?></h1>
+      <div class="TotalTour flex items-center flex-col w-[230px] ">
+        <h1 class = 'text-4xl flex items-center font-bold text-black'> <i class="fa-solid fa-van-shuttle text-green-400"></i> Total Tour</h1> <h1 class = 'text-2xl text-green-500 font-semibold '><?php echo "$total  Tour are active";  ?></h1>
      </div>
      
-     <div class="Totalbookingspace">
-    <h1><i class="fa-brands fa-servicestack"></i>Total book space</h1>
-    <h1><?php echo "$totalbookspace  applicants can apply";  ?></h1>
+     <div class="TotalTour flex items-center flex-col w-[230px]">
+        <h1 class = 'text-4xl flex items-center font-bold text-black'><i class="fa-brands fa-servicestack text-green-400"></i>Total book space</h1>
+        <h1 class = 'text-2xl text-green-500 font-semibold '><?php echo "$totalbookspace  applicants can apply";  ?></h1>
      </div>
-      <div class="TotalApplicant">
-      <h1> <i class="fa-solid fa-people-group"></i>Total Applicant</h1>
-      <h1><?php echo "$count applicants applied" ?></h1>
+      <div class="TotalTour flex items-center flex-col w-[230px]">
+        <h1 class = 'text-4xl flex items-center font-bold text-black'> <i class="fa-solid fa-people-group text-green-400"></i>Total Applicant</h1>
+        <h1 class = 'text-2xl text-green-500 font-semibold '><?php echo "$count applicants applied" ?></h1>
       </div>
-       <div class="Remaining">
-      <h1><i class="fa-solid fa-hourglass"></i>Remaining Book space</h1>
-      <h1><?php $remain= $totalbookspace-$count
+       <div class="TotalTour flex items-center flex-col w-[230px]">
+          <h1 class = 'text-4xl flex items-center font-bold text-black'><i class="fa-solid fa-hourglass text-green-400"></i>Remaining Book space</h1>
+          <h1 class = 'text-2xl text-green-500 font-semibold '><?php $remain= $totalbookspace-$count
       ;  echo "$remain space remain" ?></h1>
 
       </div>
-       <div class="Todaycustomers">
-      <h1><i class="fa-solid fa-door-open"></i>Todays customers</h1>
-        <h1><?php 
+       <div class="TotalTour flex items-center flex-col w-[230px]">
+        <h1 class = 'text-4xl flex items-center font-bold text-black'><i class="fa-solid fa-door-open text-green-400"></i>Todays customers</h1>
+          <h1 class = 'text-2xl text-green-500 font-semibold '><?php 
       ;  echo "$countday booking order" ?></h1>
       </div>
      
@@ -241,6 +270,7 @@ if (mysqli_num_rows($result) > 0) {
         <th><span>Duration</span></th>
         <th><span>Start data</span></th>
         <th><span>Edit</span></th>
+        <th><span>Delete</span></th>
       </tr>
     </thead>
     <tbody>
@@ -275,6 +305,12 @@ if (mysqli_num_rows($result) > 0) {
         <td> $duration days</td>
         <td>$date</td>
         <td> <a class="edit" href="editTour.php?id=$tour_id">EDIT</a></td>
+        <td class = 'flex items-right flex-col'> <a class="flex items-right flex-col justify-right" href="editTour.php?id=$tour_id">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-red-500" fill="none" viewBox="0 0 24 24" 
+          stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+        </svg>
+        </a></td>
       </tr>
     DDD;
 
