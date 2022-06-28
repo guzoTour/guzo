@@ -242,7 +242,6 @@ section{
         -webkit-transform-origin: 50% 0%;
         -webkit-transform: perspective(350px) rotateX(-90deg);
       }
-
       .hov:hover .seleter{
         
         -webkit-transform-origin: top;
