@@ -103,6 +103,37 @@
         ?>
     </nav>
  </header>
+ <div class="home" id="home">
+        <div class="content">
+            <h3>Guzo Tour</h3>
+            <p>discover new place with us</p>
+            <a href="#" class="btn">discover more</a>
+        </div>
+        <div class="controls">
+            <span class="vid-btn active" data-src="multimedia/video/hawassa.mp4"></span>
+            <span class="vid-btn" data-src="multimedia/video/afar.mp4"></span>
+            <span class="vid-btn" data-src="multimedia/video/afar2.mp4"></span>
+            <span class="vid-btn" data-src="multimedia/video/gondar.mp4"></span>
+            <span class="vid-btn" data-src="multimedia/video/lalibela.mp4"></span>
+        </div>
+        <div class="video-container">
+            <video src="multimedia/video/hawassa.mp4" id="video-slider" loop autoplay muted></video>
+        </div>
+        <div class= 'bg'></div>
+</div>
+
+<div class = 'book'>
+            <h1 class="heading">
+                <span>b</span>
+                <span>o</span>
+                <span>o</span>
+                <span>k</span>
+                <span class="space"></span>
+                <span>n</span>
+                <span>o</span>
+                <span>w</span>
+            </h1>
+</div>
     <section class="overview" id="overview">
       <div class="card-container">
         
@@ -134,6 +165,36 @@ include('./view/public/displayTour.php');
 
     <script src="./javascrift/js.js"></script>
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;900&family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap');
+
+:root{
+    --orange: #55c57a;
+    
+}
+*{
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: all .2s linear;
+}
+::selection{
+    background:var(--orange);
+    color: white;
+}
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 6rem;
+    scroll-behavior: smooth;
+}
+section{
+    padding: 2rem 9%;
+}
       .footer__logo{
         display: flex;
         justify-content: center;
@@ -252,6 +313,123 @@ include('./view/public/displayTour.php');
         display: block;
         position: absolute;
       }
+    .home{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    position: relative;
+    z-index: 0;
+    }
+    .home .content{
+        text-align: center;
+    }
+    .home .content h3{
+        font-size: 4.5rem;
+        color: #fff;
+        text-transform: uppercase;
+        text-shadow: 0 .3rem .5rem rgba(0, 0, 0, .1);
+    }
+
+    .home .content p{
+        font-size: 2.3rem;
+        color: #fff;
+        padding: 2rem;
+    }
+    .home .content a{
+        padding: .8rem 2rem;
+        font-size: 1.6rem;
+        border: .1rem solid var(--orange);
+    }
+    .home .video-container video{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 99vw;
+        height: 90vh;
+        object-fit: cover;
+        z-index: -34;
+    }
+    .home .controls{
+        padding: 1rem;
+        border-radius: 5rem;
+        background: rgba(0, 0, 0, .7);
+        position: relative;
+        top: 10rem;
+    }
+    .home .controls .vid-btn{
+        height: 2rem;
+        width: 2rem;
+        display: inline-block;
+        border-radius: 50%;
+        background: #fff;
+        cursor: pointer;
+        margin: 0 .5rem;
+    }
+    .home .controls .vid-btn.active{
+        background: var(--orange);
+    }
+.heading{
+    text-align: center;
+    padding: 2.5rem 0;
+}
+.heading{
+    text-transform: uppercase;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.heading span{
+    font-size: 3.5rem;
+    background: rgba(255, 165, 0, .2);
+    color: var(--orange);
+    border-radius: .5rem;
+    padding: .2rem 1rem;
+    margin: .3rem;
+}
+.heading .space{
+    background: none;
+}
+.bg{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 99vw;
+    height: 90vh;
+    background-color:rgba(0,0,0, 0.5);
+    z-index: -3;
+  }
     </style>
+    <script>
+        let searchBtn = document.querySelector('#search-btn');
+        let searchBar = document.querySelector('.search-bar-container');
+        let loginContainer = document.querySelector('.login-form-container');
+        let loginBtn = document.querySelector('#login-btn');
+        let closeIcon = document.querySelector("#closeIcon");
+        let menuBar = document.querySelector("#menu-bar");
+        let navBar = document.querySelector(".navbar");
+        let videoControl = document.querySelectorAll('.vid-btn');
+        let videoSlider = document.querySelector("#video-slider");
+        
+        
+        window.onscroll = ()=>{
+            searchBtn.classList.remove("fa-times")
+            loginContainer.classList.remove('active')
+            searchBar.classList.remove("active")
+            menuBar.classList.remove('fa-times')
+            navBar.classList.remove('active')
+        }
+        
+        videoControl.forEach(btn=>{
+            btn.addEventListener('click',(e)=>{
+                console.log(e.target.dataset.src);
+                document.querySelector(".controls .active").classList.remove('active')
+                btn.classList.toggle("active")
+                videoSlider.src = e.target.dataset.src
+            })
+        })
+        </script>
   </body>
 </html>
