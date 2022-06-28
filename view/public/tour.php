@@ -72,7 +72,6 @@
        $cover_image = $row["cover_image"];
 
        $_SESSION["display"] = true;
-
        $count="SELECT COUNT(*) FROM booking WHERE tour_id=$tour_id;";
        $cResult = mysqli_query($conn, $count);
        $data=mysqli_fetch_assoc($cResult);
@@ -141,7 +140,6 @@
       }
       else{
         echo '<a href="../shared/profile.php" class="nav__el">';
-
       }
         if(isset($_SESSION["username"])){
           
@@ -165,7 +163,6 @@
             </span
           >
         </h1>
-        
         <div class="heading-box__group">
           <div class="heading-box__detail">
             <i class="fa-solid fa-clock"></i>
@@ -183,7 +180,6 @@
         </div>
       </div>
     </section>
-
     <section class="section-description">
       <div class="overview-box">
         <div>
@@ -229,7 +225,6 @@
           //  echo    $summary;
            echo $desciptions;
           ?>
-         
         </p>
  
       </div>
@@ -263,7 +258,6 @@
       <div id="map"></div>
       <script>
         mapboxgl.accessToken ='pk.eyJ1Ijoiam9uYXNzY2htZWR0bWFubiIsImEiOiJjam54ZmM5N3gwNjAzM3dtZDNxYTVlMnd2In0.ytpI7V7w7cyT1Kq5rT9Z1A';
-
         const geojson = {
           type: 'FeatureCollection',
           features: [

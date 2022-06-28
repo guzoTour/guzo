@@ -3,6 +3,12 @@
     include "../../utils/prevent.php";
     isAuthenticated();
     isAuthorzied();
+    if(isset($_SESSION["add_error"])){
+      echo '<h3>'.$_SESSION["add_error"]."</h3>";
+      $_SESSION["add_error"] = null;
+    }
+
+
 ?><!doctype html>
 <html>
 <head>

@@ -140,7 +140,6 @@ if (mysqli_query($conn, $sql)) {
         </form>
         <button class="upload rbtn disablers" id="changepassword"><a href="./changePassword.php">Change Password</a></button>;
         <?php
-    
               // if($role==="admin"){
               //     echo '<button class="upload disablers" id="goto-edit-profile"><a href="../controller/editTour.php">Edit Tour</a></button>';
               //     echo '<button class="upload disablers" id="goto-edit-profile"><a href="./add_tour.php">Add Tour</a></button>';

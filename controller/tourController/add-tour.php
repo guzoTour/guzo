@@ -12,12 +12,38 @@
         $region = $_POST["region"];
         $direction = $_POST["direction"];
         $town = $_POST["town"];
-        $price = $_POST["price"];
+        $price = $_POST["price"]; 
         $discount_price = $_POST["discount_price"];
         $summary = $_POST["summary"];
         $description = $_POST["description"];
         $start_date = $_POST["start-date"];
-        
+
+        if(empty($tour_name)||empty($duration)||empty($group_size)||empty($difficulty)||empty($region)||empty($direction)||empty($town)
+        ||empty($price)||empty($discount_price)||empty($summary)||empty($description)||empty($start_date)){
+            sendError("Please fill all fields");
+        }
+        if(!preg_match("/^[a-zA-Z ]*$/",$tour_name)) {
+            sendError("Tour name can contain only characters");
+        }
+        if(!is_integer($duration)||($duration<0||$duration>100)){
+            sendError("Inavlid duration");
+        }
+        if(!is_integer($group_size)||($group_size<0||$group_size>100)) {
+            sendError("Inavlid group size");
+        }
+        if(!preg_match("/^[a-zA-Z ]*$/",$region)) {
+            sendError("Inavlid region");
+        }
+        if(!preg_match("/^[a-zA-Z ]*$/",$town)) {
+            sendError("Inavlid town");
+        }
+        if(!is_double($price)||($price<0||$price>1000000)) {
+            sendError("The price must be between 0 and 10000000 birr");
+        }
+        if(!is_double($discount_price)||($discount_price<0||$discount_price>5000)) {
+            sendError("The discount price must be between 0 and 50 birr");
+        }
+    
         $sql = "INSERT INTO tour (tour_name, duration, group_size, difficulty, price, discount, summary,descriptions)
         VALUES ('$tour_name', $duration, $group_size, '$difficulty', $price, $discount_price, '$summary', '$description')";
         echo $sql;
@@ -42,6 +68,11 @@
         catch(Exception $err){
             echo $err;
         }
+
+    }
+    function sendError($err){
+        $_SESSION["add_error"] = $err;
+        header("location:../../view/admin/addTour.php");
 
     }
 ?>
